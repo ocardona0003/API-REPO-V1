@@ -204,10 +204,14 @@
     <Compile Include="Controllers\SEC_PermisosController.cs" />
     <Compile Include="Controllers\SEC_TipoUsuarioController.cs" />
     <Compile Include="Controllers\SEC_UsuarioController.cs" />
+    <Compile Include="Controllers\TipoImpresionController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EspecificacionImpresion.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Model1.Context.cs">
@@ -224,6 +228,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RodilloImpresion.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SEC_PermisoConTipoUsuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -250,6 +257,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_V_SEC_Usuario_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TipoImpresion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

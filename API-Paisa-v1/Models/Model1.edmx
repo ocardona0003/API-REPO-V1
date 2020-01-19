@@ -5,6 +5,27 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="paisaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EspecificacionImpresion">
+          <Key>
+            <PropertyRef Name="idEspecificacionImpresion" />
+          </Key>
+          <Property Name="idEspecificacionImpresion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usuarioCrea" Type="int" />
+          <Property Name="fechaCrea" Type="datetime" />
+          <Property Name="usuarioMod" Type="int" />
+          <Property Name="fechaMod" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RodilloImpresion">
+          <Key>
+            <PropertyRef Name="idRodilloImpresion" />
+          </Key>
+          <Property Name="idRodilloImpresion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CantidadRodxMedida" Type="int" />
+          <Property Name="Engranaje" Type="varchar" MaxLength="25" />
+          <Property Name="Pulgadas" Type="varchar" MaxLength="25" />
+          <Property Name="CantColores" Type="int" />
+        </EntityType>
         <EntityType Name="SEC_PermisoConTipoUsuario">
           <Key>
             <PropertyRef Name="idPermisoConTipoUsuario" />
@@ -46,6 +67,17 @@
           <Property Name="activo" Type="bit" />
           <Property Name="ultimaFechaMod" Type="datetime" />
           <Property Name="ultimoIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TipoImpresion">
+          <Key>
+            <PropertyRef Name="idTipoImpresion" />
+          </Key>
+          <Property Name="idTipoImpresion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="usuarioCrea" Type="int" />
+          <Property Name="fechaCrea" Type="datetime" />
+          <Property Name="usuarioMod" Type="int" />
+          <Property Name="fechaMod" Type="datetime" />
         </EntityType>
         <Association Name="RefSEC_Permisos561">
           <End Role="SEC_Permisos" Type="Self.SEC_Permisos" Multiplicity="1" />
@@ -89,10 +121,13 @@
         </Function>
         <Function Name="sp_V_SEC_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="paisaModelStoreContainer">
+          <EntitySet Name="EspecificacionImpresion" EntityType="Self.EspecificacionImpresion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RodilloImpresion" EntityType="Self.RodilloImpresion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_PermisoConTipoUsuario" EntityType="Self.SEC_PermisoConTipoUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_Permisos" EntityType="Self.SEC_Permisos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_TipoUsuario" EntityType="Self.SEC_TipoUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_Usuario" EntityType="Self.SEC_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoImpresion" EntityType="Self.TipoImpresion" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="RefSEC_Permisos561" Association="Self.RefSEC_Permisos561">
             <End Role="SEC_Permisos" EntitySet="SEC_Permisos" />
             <End Role="SEC_PermisoConTipoUsuario" EntitySet="SEC_PermisoConTipoUsuario" />
@@ -142,6 +177,9 @@
             <End Role="SEC_TipoUsuario" EntitySet="SEC_TipoUsuario" />
             <End Role="SEC_Usuario" EntitySet="SEC_Usuario" />
           </AssociationSet>
+          <EntitySet Name="EspecificacionImpresion" EntityType="paisaModel.EspecificacionImpresion" />
+          <EntitySet Name="RodilloImpresion" EntityType="paisaModel.RodilloImpresion" />
+          <EntitySet Name="TipoImpresion" EntityType="paisaModel.TipoImpresion" />
         </EntityContainer>
         <ComplexType Name="sp_V_SEC_Usuario_Result">
           <Property Type="Int32" Name="idUsuario" Nullable="false" />
@@ -274,6 +312,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EspecificacionImpresion">
+          <Key>
+            <PropertyRef Name="idEspecificacionImpresion" />
+          </Key>
+          <Property Name="idEspecificacionImpresion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuarioCrea" Type="Int32" />
+          <Property Name="fechaCrea" Type="DateTime" Precision="3" />
+          <Property Name="usuarioMod" Type="Int32" />
+          <Property Name="fechaMod" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="RodilloImpresion">
+          <Key>
+            <PropertyRef Name="idRodilloImpresion" />
+          </Key>
+          <Property Name="idRodilloImpresion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CantidadRodxMedida" Type="Int32" />
+          <Property Name="Engranaje" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Pulgadas" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CantColores" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TipoImpresion">
+          <Key>
+            <PropertyRef Name="idTipoImpresion" />
+          </Key>
+          <Property Name="idTipoImpresion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usuarioCrea" Type="Int32" />
+          <Property Name="fechaCrea" Type="DateTime" Precision="3" />
+          <Property Name="usuarioMod" Type="Int32" />
+          <Property Name="fechaMod" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -350,6 +420,41 @@
                 <ScalarProperty Name="codUsuario" ColumnName="codUsuario" />
                 <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EspecificacionImpresion">
+            <EntityTypeMapping TypeName="paisaModel.EspecificacionImpresion">
+              <MappingFragment StoreEntitySet="EspecificacionImpresion">
+                <ScalarProperty Name="fechaMod" ColumnName="fechaMod" />
+                <ScalarProperty Name="usuarioMod" ColumnName="usuarioMod" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idEspecificacionImpresion" ColumnName="idEspecificacionImpresion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RodilloImpresion">
+            <EntityTypeMapping TypeName="paisaModel.RodilloImpresion">
+              <MappingFragment StoreEntitySet="RodilloImpresion">
+                <ScalarProperty Name="CantColores" ColumnName="CantColores" />
+                <ScalarProperty Name="Pulgadas" ColumnName="Pulgadas" />
+                <ScalarProperty Name="Engranaje" ColumnName="Engranaje" />
+                <ScalarProperty Name="CantidadRodxMedida" ColumnName="CantidadRodxMedida" />
+                <ScalarProperty Name="idRodilloImpresion" ColumnName="idRodilloImpresion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoImpresion">
+            <EntityTypeMapping TypeName="paisaModel.TipoImpresion">
+              <MappingFragment StoreEntitySet="TipoImpresion">
+                <ScalarProperty Name="fechaMod" ColumnName="fechaMod" />
+                <ScalarProperty Name="usuarioMod" ColumnName="usuarioMod" />
+                <ScalarProperty Name="fechaCrea" ColumnName="fechaCrea" />
+                <ScalarProperty Name="usuarioCrea" ColumnName="usuarioCrea" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idTipoImpresion" ColumnName="idTipoImpresion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

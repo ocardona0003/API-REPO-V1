@@ -50,7 +50,7 @@ namespace API_Paisa_v1.Controllers
             {
                 return BadRequest();
             }
-
+            sEC_Usuario.ultimaFechaMod = DateTime.Now;
             db.Entry(sEC_Usuario).State = EntityState.Modified;
 
             try
@@ -80,7 +80,7 @@ namespace API_Paisa_v1.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            sEC_Usuario.ultimaFechaMod = DateTime.Now;
             db.SEC_Usuario.Add(sEC_Usuario);
             db.SaveChanges();
 
