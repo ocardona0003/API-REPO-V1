@@ -70,7 +70,7 @@ namespace API_Paisa_v1.Controllers
                 }
             }
 
-            return Ok();
+            return Ok(sEC_TipoUsuario);
         }
 
         // POST: api/SEC_TipoUsuario
