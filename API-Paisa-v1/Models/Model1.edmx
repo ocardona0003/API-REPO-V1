@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="paisaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SEC_PermisoConTipoUsuario">
+          <Key>
+            <PropertyRef Name="idPermisoConTipoUsuario" />
+          </Key>
+          <Property Name="idPermisoConTipoUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTipoUsuario" Type="int" Nullable="false" />
+          <Property Name="idPermiso" Type="int" Nullable="false" />
+          <Property Name="ultimaFecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SEC_Permisos">
+          <Key>
+            <PropertyRef Name="idPermiso" />
+          </Key>
+          <Property Name="idPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdObjeto" Type="varchar" MaxLength="50" />
+          <Property Name="idPadre" Type="varchar" MaxLength="50" />
+          <Property Name="textoAMostrar" Type="varchar" MaxLength="50" />
+          <Property Name="ultimaFecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SEC_TipoUsuario">
+          <Key>
+            <PropertyRef Name="idTipoUsuario" />
+          </Key>
+          <Property Name="idTipoUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoUsuario" Type="varchar" MaxLength="15" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="ultimaFecha" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SEC_Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTipoUsuario" Type="int" Nullable="false" />
+          <Property Name="codUsuario" Type="varchar" MaxLength="15" />
+          <Property Name="pass" Type="varbinary" MaxLength="8000" />
+          <Property Name="nombreCompleto" Type="varchar" MaxLength="250" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="ultimaFechaMod" Type="datetime" />
+          <Property Name="ultimoIngreso" Type="datetime" />
+        </EntityType>
+        <Association Name="RefSEC_Permisos561">
+          <End Role="SEC_Permisos" Type="Self.SEC_Permisos" Multiplicity="1" />
+          <End Role="SEC_PermisoConTipoUsuario" Type="Self.SEC_PermisoConTipoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_Permisos">
+              <PropertyRef Name="idPermiso" />
+            </Principal>
+            <Dependent Role="SEC_PermisoConTipoUsuario">
+              <PropertyRef Name="idPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSEC_TipoUsuario551">
+          <End Role="SEC_TipoUsuario" Type="Self.SEC_TipoUsuario" Multiplicity="1" />
+          <End Role="SEC_PermisoConTipoUsuario" Type="Self.SEC_PermisoConTipoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_TipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="SEC_PermisoConTipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSEC_TipoUsuario571">
+          <End Role="SEC_TipoUsuario" Type="Self.SEC_TipoUsuario" Multiplicity="1" />
+          <End Role="SEC_Usuario" Type="Self.SEC_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_TipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="SEC_Usuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_P_SEC_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="codUsuario" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_V_SEC_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="paisaModelStoreContainer">
+          <EntitySet Name="SEC_PermisoConTipoUsuario" EntityType="Self.SEC_PermisoConTipoUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEC_Permisos" EntityType="Self.SEC_Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEC_TipoUsuario" EntityType="Self.SEC_TipoUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEC_Usuario" EntityType="Self.SEC_Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="RefSEC_Permisos561" Association="Self.RefSEC_Permisos561">
+            <End Role="SEC_Permisos" EntitySet="SEC_Permisos" />
+            <End Role="SEC_PermisoConTipoUsuario" EntitySet="SEC_PermisoConTipoUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="RefSEC_TipoUsuario551" Association="Self.RefSEC_TipoUsuario551">
+            <End Role="SEC_TipoUsuario" EntitySet="SEC_TipoUsuario" />
+            <End Role="SEC_PermisoConTipoUsuario" EntitySet="SEC_PermisoConTipoUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="RefSEC_TipoUsuario571" Association="Self.RefSEC_TipoUsuario571">
+            <End Role="SEC_TipoUsuario" EntitySet="SEC_TipoUsuario" />
+            <End Role="SEC_Usuario" EntitySet="SEC_Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="paisaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="paisaEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="sp_V_SEC_Usuario" ReturnType="Collection(paisaModel.sp_V_SEC_Usuario_Result)">
+            </FunctionImport>
+          <FunctionImport Name="sp_P_SEC_Usuario" ReturnType="Collection(paisaModel.sp_P_SEC_Usuario_Result)">
+            <Parameter Name="codUsuario" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_P_SEC_Usuario1" ReturnType="Collection(paisaModel.sp_P_SEC_Usuario1_Result)">
+            <Parameter Name="codUsuario" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_V_SEC_Usuario1" ReturnType="Collection(paisaModel.sp_V_SEC_Usuario1_Result)" />
+          <FunctionImport Name="sp_P_SEC_Usuario2" ReturnType="Collection(paisaModel.sp_P_SEC_Usuario2_Result)">
+            <Parameter Name="codUsuario" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="SEC_PermisoConTipoUsuario" EntityType="paisaModel.SEC_PermisoConTipoUsuario" />
+          <EntitySet Name="SEC_Permisos" EntityType="paisaModel.SEC_Permisos" />
+          <EntitySet Name="SEC_TipoUsuario" EntityType="paisaModel.SEC_TipoUsuario" />
+          <EntitySet Name="SEC_Usuario" EntityType="paisaModel.SEC_Usuario" />
+          <AssociationSet Name="RefSEC_Permisos561" Association="paisaModel.RefSEC_Permisos561">
+            <End Role="SEC_Permisos" EntitySet="SEC_Permisos" />
+            <End Role="SEC_PermisoConTipoUsuario" EntitySet="SEC_PermisoConTipoUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="RefSEC_TipoUsuario551" Association="paisaModel.RefSEC_TipoUsuario551">
+            <End Role="SEC_TipoUsuario" EntitySet="SEC_TipoUsuario" />
+            <End Role="SEC_PermisoConTipoUsuario" EntitySet="SEC_PermisoConTipoUsuario" />
+          </AssociationSet>
+          <AssociationSet Name="RefSEC_TipoUsuario571" Association="paisaModel.RefSEC_TipoUsuario571">
+            <End Role="SEC_TipoUsuario" EntitySet="SEC_TipoUsuario" />
+            <End Role="SEC_Usuario" EntitySet="SEC_Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="sp_V_SEC_Usuario_Result">
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="Int32" Name="idTipoUsuario" Nullable="false" />
+          <Property Type="String" Name="codUsuario" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="nombreCompleto" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="activo" Nullable="true" />
+          <Property Type="DateTime" Name="ultimaFechaMod" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_P_SEC_Usuario_Result">
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="Int32" Name="idTipoUsuario" Nullable="false" />
+          <Property Type="String" Name="codUsuario" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="nombreCompleto" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="activo" Nullable="true" />
+          <Property Type="DateTime" Name="ultimaFechaMod" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_P_SEC_Usuario1_Result">
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="Int32" Name="idTipoUsuario" Nullable="false" />
+          <Property Type="String" Name="codUsuario" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="nombreCompleto" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="activo" Nullable="true" />
+          <Property Type="DateTime" Name="ultimaFechaMod" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_V_SEC_Usuario1_Result">
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="Int32" Name="idTipoUsuario" Nullable="false" />
+          <Property Type="String" Name="codUsuario" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="nombreCompleto" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="activo" Nullable="true" />
+          <Property Type="DateTime" Name="ultimaFechaMod" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_P_SEC_Usuario2_Result">
+          <Property Type="Int32" Name="idUsuario" Nullable="false" />
+          <Property Type="Int32" Name="idTipoUsuario" Nullable="false" />
+          <Property Type="String" Name="codUsuario" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="codUsuario2" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="nombreCompleto" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="activo" Nullable="true" />
+          <Property Type="DateTime" Name="ultimaFechaMod" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="SEC_PermisoConTipoUsuario">
+          <Key>
+            <PropertyRef Name="idPermisoConTipoUsuario" />
+          </Key>
+          <Property Name="idPermisoConTipoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoUsuario" Type="Int32" Nullable="false" />
+          <Property Name="idPermiso" Type="Int32" Nullable="false" />
+          <Property Name="ultimaFecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SEC_Permisos" Relationship="paisaModel.RefSEC_Permisos561" FromRole="SEC_PermisoConTipoUsuario" ToRole="SEC_Permisos" />
+          <NavigationProperty Name="SEC_TipoUsuario" Relationship="paisaModel.RefSEC_TipoUsuario551" FromRole="SEC_PermisoConTipoUsuario" ToRole="SEC_TipoUsuario" />
+        </EntityType>
+        <EntityType Name="SEC_Permisos">
+          <Key>
+            <PropertyRef Name="idPermiso" />
+          </Key>
+          <Property Name="idPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdObjeto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idPadre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="textoAMostrar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimaFecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SEC_PermisoConTipoUsuario" Relationship="paisaModel.RefSEC_Permisos561" FromRole="SEC_Permisos" ToRole="SEC_PermisoConTipoUsuario" />
+        </EntityType>
+        <EntityType Name="SEC_TipoUsuario">
+          <Key>
+            <PropertyRef Name="idTipoUsuario" />
+          </Key>
+          <Property Name="idTipoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoUsuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimaFecha" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SEC_PermisoConTipoUsuario" Relationship="paisaModel.RefSEC_TipoUsuario551" FromRole="SEC_TipoUsuario" ToRole="SEC_PermisoConTipoUsuario" />
+          <NavigationProperty Name="SEC_Usuario" Relationship="paisaModel.RefSEC_TipoUsuario571" FromRole="SEC_TipoUsuario" ToRole="SEC_Usuario" />
+        </EntityType>
+        <EntityType Name="SEC_Usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoUsuario" Type="Int32" Nullable="false" />
+          <Property Name="codUsuario" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="Binary" MaxLength="8000" FixedLength="false" />
+          <Property Name="nombreCompleto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="ultimaFechaMod" Type="DateTime" Precision="3" />
+          <Property Name="ultimoIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SEC_TipoUsuario" Relationship="paisaModel.RefSEC_TipoUsuario571" FromRole="SEC_Usuario" ToRole="SEC_TipoUsuario" />
+        </EntityType>
+        <Association Name="RefSEC_Permisos561">
+          <End Type="paisaModel.SEC_Permisos" Role="SEC_Permisos" Multiplicity="1" />
+          <End Type="paisaModel.SEC_PermisoConTipoUsuario" Role="SEC_PermisoConTipoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_Permisos">
+              <PropertyRef Name="idPermiso" />
+            </Principal>
+            <Dependent Role="SEC_PermisoConTipoUsuario">
+              <PropertyRef Name="idPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSEC_TipoUsuario551">
+          <End Type="paisaModel.SEC_TipoUsuario" Role="SEC_TipoUsuario" Multiplicity="1" />
+          <End Type="paisaModel.SEC_PermisoConTipoUsuario" Role="SEC_PermisoConTipoUsuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_TipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="SEC_PermisoConTipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefSEC_TipoUsuario571">
+          <End Type="paisaModel.SEC_TipoUsuario" Role="SEC_TipoUsuario" Multiplicity="1" />
+          <End Type="paisaModel.SEC_Usuario" Role="SEC_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEC_TipoUsuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Principal>
+            <Dependent Role="SEC_Usuario">
+              <PropertyRef Name="idTipoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="paisaModelStoreContainer" CdmEntityContainer="paisaEntities" >
+          <FunctionImportMapping FunctionImportName="sp_V_SEC_Usuario1" FunctionName="paisaModel.Store.sp_V_SEC_Usuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="paisaModel.sp_V_SEC_Usuario1_Result">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
+                <ScalarProperty Name="codUsuario" ColumnName="codUsuario" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="ultimaFechaMod" ColumnName="ultimaFechaMod" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_P_SEC_Usuario2" FunctionName="paisaModel.Store.sp_P_SEC_Usuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="paisaModel.sp_P_SEC_Usuario2_Result">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
+                <ScalarProperty Name="codUsuario" ColumnName="codUsuario" />
+                <ScalarProperty Name="codUsuario2" ColumnName="codUsuario2" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="ultimaFechaMod" ColumnName="ultimaFechaMod" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="SEC_PermisoConTipoUsuario">
+            <EntityTypeMapping TypeName="paisaModel.SEC_PermisoConTipoUsuario">
+              <MappingFragment StoreEntitySet="SEC_PermisoConTipoUsuario">
+                <ScalarProperty Name="ultimaFecha" ColumnName="ultimaFecha" />
+                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+                <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
+                <ScalarProperty Name="idPermisoConTipoUsuario" ColumnName="idPermisoConTipoUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEC_Permisos">
+            <EntityTypeMapping TypeName="paisaModel.SEC_Permisos">
+              <MappingFragment StoreEntitySet="SEC_Permisos">
+                <ScalarProperty Name="ultimaFecha" ColumnName="ultimaFecha" />
+                <ScalarProperty Name="textoAMostrar" ColumnName="textoAMostrar" />
+                <ScalarProperty Name="idPadre" ColumnName="idPadre" />
+                <ScalarProperty Name="IdObjeto" ColumnName="IdObjeto" />
+                <ScalarProperty Name="idPermiso" ColumnName="idPermiso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEC_TipoUsuario">
+            <EntityTypeMapping TypeName="paisaModel.SEC_TipoUsuario">
+              <MappingFragment StoreEntitySet="SEC_TipoUsuario">
+                <ScalarProperty Name="ultimaFecha" ColumnName="ultimaFecha" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
+                <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEC_Usuario">
+            <EntityTypeMapping TypeName="paisaModel.SEC_Usuario">
+              <MappingFragment StoreEntitySet="SEC_Usuario">
+                <ScalarProperty Name="ultimoIngreso" ColumnName="ultimoIngreso" />
+                <ScalarProperty Name="ultimaFechaMod" ColumnName="ultimaFechaMod" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="codUsuario" ColumnName="codUsuario" />
+                <ScalarProperty Name="idTipoUsuario" ColumnName="idTipoUsuario" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
