@@ -223,6 +223,7 @@
     <Compile Include="Controllers\04. ProtocoloMaterial\AnchoSinFuellesController.cs" />
     <Compile Include="Controllers\04. ProtocoloMaterial\Calibre2CarasController.cs" />
     <Compile Include="Controllers\04. ProtocoloMaterial\FuellesController.cs" />
+    <Compile Include="Controllers\04. ProtocoloMaterial\LargoSinFuellesController.cs" />
     <Compile Include="Controllers\04. ProtocoloMaterial\TipoSellosController.cs" />
     <Compile Include="Controllers\04. ProtocoloMaterial\UnidadMedidasController.cs" />
     <Compile Include="Global.asax.cs">
