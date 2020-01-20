@@ -13,7 +13,7 @@ using API_Paisa_v1.Models;
 namespace API_Paisa_v1.Controllers._03._ProtocoloEncabezados
 {
     [Authorize]
-    [RoutePrefix("api/ProtocoloDetalleExigenciasClientes")]
+    [RoutePrefix("api/ProtocoloDetalleFardos")]
     public class ProtocoloDetalleFardosController : ApiController
     {
         private paisaEntities db = new paisaEntities();
