@@ -12,9 +12,6 @@
         <AssociationConnector Association="paisaModel.RefSEC_Permisos561" />
         <AssociationConnector Association="paisaModel.RefSEC_TipoUsuario551" />
         <AssociationConnector Association="paisaModel.RefSEC_TipoUsuario571" />
-        <EntityTypeShape EntityType="paisaModel.EspecificacionImpresion" Width="1.5" PointX="5.375" PointY="0.75" />
-        <EntityTypeShape EntityType="paisaModel.RodilloImpresion" Width="1.5" PointX="5.375" PointY="3.75" />
-        <EntityTypeShape EntityType="paisaModel.TipoImpresion" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

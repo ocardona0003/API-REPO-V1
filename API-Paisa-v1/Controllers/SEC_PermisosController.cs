@@ -39,17 +39,13 @@ namespace API_Paisa_v1.Controllers
 
         // PUT: api/SEC_Permisos/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutSEC_Permisos(int id, SEC_Permisos sEC_Permisos)
+        public IHttpActionResult PutSEC_Permisos(SEC_Permisos sEC_Permisos)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != sEC_Permisos.idPermiso)
-            {
-                return BadRequest();
-            }
             sEC_Permisos.ultimaFecha = DateTime.Now;
             db.Entry(sEC_Permisos).State = EntityState.Modified;
 
@@ -59,7 +55,7 @@ namespace API_Paisa_v1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SEC_PermisosExists(id))
+                if (!SEC_PermisosExists(sEC_Permisos.idPermiso))
                 {
                     return NotFound();
                 }
@@ -68,7 +64,7 @@ namespace API_Paisa_v1.Controllers
                     throw;
                 }
             }
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(sEC_Permisos);
         }
 
         // POST: api/SEC_Permisos
