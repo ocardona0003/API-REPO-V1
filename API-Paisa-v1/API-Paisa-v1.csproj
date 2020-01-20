@@ -221,6 +221,7 @@
     <Compile Include="Controllers\03. ProtocoloEncabezados\TipoTapesController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\TipoTermoencogiblesController.cs" />
     <Compile Include="Controllers\04. ProtocoloMaterial\AnchoSinFuellesController.cs" />
+    <Compile Include="Controllers\04. ProtocoloMaterial\Calibre2CarasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
