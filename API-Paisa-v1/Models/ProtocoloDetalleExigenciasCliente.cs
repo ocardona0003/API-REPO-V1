@@ -12,22 +12,16 @@ namespace API_Paisa_v1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ProtocoloDetalleImpresion
+    public partial class ProtocoloDetalleExigenciasCliente
     {
-        public int idProtocoloDetImpresion { get; set; }
+        public int idProtocoloDetExiCliente { get; set; }
         public int IdEncabezado { get; set; }
-        public int idEspecificacionImpresion { get; set; }
-        public Nullable<int> idRodilloImpresion { get; set; }
-        public Nullable<int> CantColores { get; set; }
-        public Nullable<decimal> NoRepeticion { get; set; }
-        public Nullable<decimal> NoPistas { get; set; }
-        public int idTipoImpresion { get; set; }
+        public Nullable<int> idTipoExigencia { get; set; }
+        public string Otros { get; set; }
         public Nullable<int> ultimoUsr { get; set; }
         public Nullable<System.DateTime> ultimaFec { get; set; }
     
-        public virtual EspecificacionImpresion EspecificacionImpresion { get; set; }
-        public virtual RodilloImpresion RodilloImpresion { get; set; }
-        public virtual TipoImpresion TipoImpresion { get; set; }
         public virtual ProtocoloEncabezado ProtocoloEncabezado { get; set; }
+        public virtual TipoExigencia TipoExigencia { get; set; }
     }
 }

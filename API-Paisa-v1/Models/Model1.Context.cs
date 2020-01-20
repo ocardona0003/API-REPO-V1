@@ -36,6 +36,14 @@ namespace API_Paisa_v1.Models
         public virtual DbSet<TipoImpresion> TipoImpresion { get; set; }
         public virtual DbSet<ImagenDetalleImpresion> ImagenDetalleImpresion { get; set; }
         public virtual DbSet<ProtocoloDetalleImpresion> ProtocoloDetalleImpresion { get; set; }
+        public virtual DbSet<ProtocoloDetalleEmpaque> ProtocoloDetalleEmpaque { get; set; }
+        public virtual DbSet<ProtocoloDetalleExigenciasCliente> ProtocoloDetalleExigenciasCliente { get; set; }
+        public virtual DbSet<ProtocoloDetalleFardo> ProtocoloDetalleFardo { get; set; }
+        public virtual DbSet<ProtocoloEncabezado> ProtocoloEncabezado { get; set; }
+        public virtual DbSet<TipoCaja> TipoCaja { get; set; }
+        public virtual DbSet<TipoExigencia> TipoExigencia { get; set; }
+        public virtual DbSet<TipoTape> TipoTape { get; set; }
+        public virtual DbSet<TipoTermoencogible> TipoTermoencogible { get; set; }
     
         public virtual ObjectResult<sp_V_SEC_Usuario_Result> sp_V_SEC_Usuario()
         {

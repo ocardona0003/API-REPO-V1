@@ -28,6 +28,45 @@
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
         </EntityType>
+        <EntityType Name="ProtocoloDetalleEmpaque">
+          <Key>
+            <PropertyRef Name="idProtocoloDetEmpaque" />
+          </Key>
+          <Property Name="idProtocoloDetEmpaque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEncabezado" Type="int" Nullable="false" />
+          <Property Name="CantEmpaquePrim" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CantPaqueteEmpaqueSec" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MillaresPorFardo" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="idTipoTermoE" Type="int" />
+          <Property Name="idTipoCaja" Type="int" />
+          <Property Name="idTipoTape" Type="int" />
+          <Property Name="Otros" Type="varchar" MaxLength="50" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProtocoloDetalleExigenciasCliente">
+          <Key>
+            <PropertyRef Name="idProtocoloDetExiCliente" />
+          </Key>
+          <Property Name="idProtocoloDetExiCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEncabezado" Type="int" Nullable="false" />
+          <Property Name="idTipoExigencia" Type="int" />
+          <Property Name="Otros" Type="varchar" MaxLength="50" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProtocoloDetalleFardo">
+          <Key>
+            <PropertyRef Name="idProtocoloDetFardo" />
+          </Key>
+          <Property Name="idProtocoloDetFardo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEncabezado" Type="int" Nullable="false" />
+          <Property Name="InformacionCompleda" Type="bit" />
+          <Property Name="InformacionPaisa" Type="bit" />
+          <Property Name="Otros" Type="nvarchar" MaxLength="250" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
         <EntityType Name="ProtocoloDetalleImpresion">
           <Key>
             <PropertyRef Name="idProtocoloDetImpresion" />
@@ -40,6 +79,27 @@
           <Property Name="NoRepeticion" Type="decimal" Precision="18" Scale="2" />
           <Property Name="NoPistas" Type="decimal" Precision="18" Scale="2" />
           <Property Name="idTipoImpresion" Type="int" Nullable="false" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProtocoloEncabezado">
+          <Key>
+            <PropertyRef Name="IdEncabezado" />
+          </Key>
+          <Property Name="IdEncabezado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigoVendedor" Type="varchar" MaxLength="16" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="NombreProducto" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoCliente" Type="varchar" MaxLength="16" />
+          <Property Name="CVE_ART" Type="varchar" MaxLength="16" />
+          <Property Name="Version" Type="int" />
+          <Property Name="ObservacionesGenerales" Type="varchar" MaxLength="250" />
+          <Property Name="EsAutorizado" Type="bit" />
+          <Property Name="usuarioAutoriza" Type="varchar" MaxLength="16" />
+          <Property Name="fechaAutoriza" Type="datetime" />
+          <Property Name="EstaProduccion" Type="bit" />
+          <Property Name="usuarioProduccion" Type="char" MaxLength="10" />
+          <Property Name="fechaProduccion" Type="datetime" />
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
         </EntityType>
@@ -97,6 +157,24 @@
           <Property Name="ultimaFechaMod" Type="datetime" />
           <Property Name="ultimoIngreso" Type="datetime" />
         </EntityType>
+        <EntityType Name="TipoCaja">
+          <Key>
+            <PropertyRef Name="idTipoCaja" />
+          </Key>
+          <Property Name="idTipoCaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcionC" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TipoExigencia">
+          <Key>
+            <PropertyRef Name="idTipoExigencia" />
+          </Key>
+          <Property Name="idTipoExigencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
         <EntityType Name="TipoImpresion">
           <Key>
             <PropertyRef Name="idTipoImpresion" />
@@ -106,6 +184,36 @@
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
         </EntityType>
+        <EntityType Name="TipoTape">
+          <Key>
+            <PropertyRef Name="idTipoTape" />
+          </Key>
+          <Property Name="idTipoTape" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TipoTermoencogible">
+          <Key>
+            <PropertyRef Name="idTipoTermoE" />
+          </Key>
+          <Property Name="idTipoTermoE" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_TipoTermoEnc">
+          <End Role="TipoTermoencogible" Type="Self.TipoTermoencogible" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleEmpaque" Type="Self.ProtocoloDetalleEmpaque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTermoencogible">
+              <PropertyRef Name="idTipoTermoE" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleEmpaque">
+              <PropertyRef Name="idTipoTermoE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RefEspecificacionImpresion28">
           <End Role="EspecificacionImpresion" Type="Self.EspecificacionImpresion" Multiplicity="1" />
           <End Role="ProtocoloDetalleImpresion" Type="Self.ProtocoloDetalleImpresion" Multiplicity="*" />
@@ -115,6 +223,54 @@
             </Principal>
             <Dependent Role="ProtocoloDetalleImpresion">
               <PropertyRef Name="idEspecificacionImpresion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloEncabezado19">
+          <End Role="ProtocoloEncabezado" Type="Self.ProtocoloEncabezado" Multiplicity="1" />
+          <End Role="ProtocoloDetalleExigenciasCliente" Type="Self.ProtocoloDetalleExigenciasCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloEncabezado">
+              <PropertyRef Name="IdEncabezado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleExigenciasCliente">
+              <PropertyRef Name="IdEncabezado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloEncabezado20">
+          <End Role="ProtocoloEncabezado" Type="Self.ProtocoloEncabezado" Multiplicity="1" />
+          <End Role="ProtocoloDetalleFardo" Type="Self.ProtocoloDetalleFardo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloEncabezado">
+              <PropertyRef Name="IdEncabezado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleFardo">
+              <PropertyRef Name="IdEncabezado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloEncabezado22">
+          <End Role="ProtocoloEncabezado" Type="Self.ProtocoloEncabezado" Multiplicity="1" />
+          <End Role="ProtocoloDetalleEmpaque" Type="Self.ProtocoloDetalleEmpaque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloEncabezado">
+              <PropertyRef Name="IdEncabezado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleEmpaque">
+              <PropertyRef Name="IdEncabezado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloEncabezado23">
+          <End Role="ProtocoloEncabezado" Type="Self.ProtocoloEncabezado" Multiplicity="1" />
+          <End Role="ProtocoloDetalleImpresion" Type="Self.ProtocoloDetalleImpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloEncabezado">
+              <PropertyRef Name="IdEncabezado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleImpresion">
+              <PropertyRef Name="IdEncabezado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -166,6 +322,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="RefTipoCaja45">
+          <End Role="TipoCaja" Type="Self.TipoCaja" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleEmpaque" Type="Self.ProtocoloDetalleEmpaque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCaja">
+              <PropertyRef Name="idTipoCaja" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleEmpaque">
+              <PropertyRef Name="idTipoCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTipoExigencia43">
+          <End Role="TipoExigencia" Type="Self.TipoExigencia" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleExigenciasCliente" Type="Self.ProtocoloDetalleExigenciasCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoExigencia">
+              <PropertyRef Name="idTipoExigencia" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleExigenciasCliente">
+              <PropertyRef Name="idTipoExigencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RefTipoImpresion27">
           <End Role="TipoImpresion" Type="Self.TipoImpresion" Multiplicity="1" />
           <End Role="ProtocoloDetalleImpresion" Type="Self.ProtocoloDetalleImpresion" Multiplicity="*" />
@@ -175,6 +355,18 @@
             </Principal>
             <Dependent Role="ProtocoloDetalleImpresion">
               <PropertyRef Name="idTipoImpresion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTipoTape46">
+          <End Role="TipoTape" Type="Self.TipoTape" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleEmpaque" Type="Self.ProtocoloDetalleEmpaque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTape">
+              <PropertyRef Name="idTipoTape" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleEmpaque">
+              <PropertyRef Name="idTipoTape" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -207,15 +399,43 @@
         <EntityContainer Name="paisaModelStoreContainer">
           <EntitySet Name="EspecificacionImpresion" EntityType="Self.EspecificacionImpresion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImagenDetalleImpresion" EntityType="Self.ImagenDetalleImpresion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProtocoloDetalleEmpaque" EntityType="Self.ProtocoloDetalleEmpaque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProtocoloDetalleExigenciasCliente" EntityType="Self.ProtocoloDetalleExigenciasCliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProtocoloDetalleFardo" EntityType="Self.ProtocoloDetalleFardo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProtocoloDetalleImpresion" EntityType="Self.ProtocoloDetalleImpresion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProtocoloEncabezado" EntityType="Self.ProtocoloEncabezado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RodilloImpresion" EntityType="Self.RodilloImpresion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_PermisoConTipoUsuario" EntityType="Self.SEC_PermisoConTipoUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_Permisos" EntityType="Self.SEC_Permisos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_TipoUsuario" EntityType="Self.SEC_TipoUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_Usuario" EntityType="Self.SEC_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCaja" EntityType="Self.TipoCaja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoExigencia" EntityType="Self.TipoExigencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoImpresion" EntityType="Self.TipoImpresion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoTape" EntityType="Self.TipoTape" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoTermoencogible" EntityType="Self.TipoTermoencogible" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TipoTermoEnc" Association="Self.FK_TipoTermoEnc">
+            <End Role="TipoTermoencogible" EntitySet="TipoTermoencogible" />
+            <End Role="ProtocoloDetalleEmpaque" EntitySet="ProtocoloDetalleEmpaque" />
+          </AssociationSet>
           <AssociationSet Name="RefEspecificacionImpresion28" Association="Self.RefEspecificacionImpresion28">
             <End Role="EspecificacionImpresion" EntitySet="EspecificacionImpresion" />
+            <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloEncabezado19" Association="Self.RefProtocoloEncabezado19">
+            <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
+            <End Role="ProtocoloDetalleExigenciasCliente" EntitySet="ProtocoloDetalleExigenciasCliente" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloEncabezado20" Association="Self.RefProtocoloEncabezado20">
+            <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
+            <End Role="ProtocoloDetalleFardo" EntitySet="ProtocoloDetalleFardo" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloEncabezado22" Association="Self.RefProtocoloEncabezado22">
+            <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
+            <End Role="ProtocoloDetalleEmpaque" EntitySet="ProtocoloDetalleEmpaque" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloEncabezado23" Association="Self.RefProtocoloEncabezado23">
+            <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
             <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
           </AssociationSet>
           <AssociationSet Name="RefRodilloImpresion54" Association="Self.RefRodilloImpresion54">
@@ -234,9 +454,21 @@
             <End Role="SEC_TipoUsuario" EntitySet="SEC_TipoUsuario" />
             <End Role="SEC_Usuario" EntitySet="SEC_Usuario" />
           </AssociationSet>
+          <AssociationSet Name="RefTipoCaja45" Association="Self.RefTipoCaja45">
+            <End Role="TipoCaja" EntitySet="TipoCaja" />
+            <End Role="ProtocoloDetalleEmpaque" EntitySet="ProtocoloDetalleEmpaque" />
+          </AssociationSet>
+          <AssociationSet Name="RefTipoExigencia43" Association="Self.RefTipoExigencia43">
+            <End Role="TipoExigencia" EntitySet="TipoExigencia" />
+            <End Role="ProtocoloDetalleExigenciasCliente" EntitySet="ProtocoloDetalleExigenciasCliente" />
+          </AssociationSet>
           <AssociationSet Name="RefTipoImpresion27" Association="Self.RefTipoImpresion27">
             <End Role="TipoImpresion" EntitySet="TipoImpresion" />
             <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
+          </AssociationSet>
+          <AssociationSet Name="RefTipoTape46" Association="Self.RefTipoTape46">
+            <End Role="TipoTape" EntitySet="TipoTape" />
+            <End Role="ProtocoloDetalleEmpaque" EntitySet="ProtocoloDetalleEmpaque" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -364,6 +596,46 @@
           </AssociationSet>
           <AssociationSet Name="RefTipoImpresion27" Association="paisaModel.RefTipoImpresion27">
             <End Role="TipoImpresion" EntitySet="TipoImpresion" />
+            <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
+          </AssociationSet>
+          <EntitySet Name="ProtocoloDetalleEmpaque" EntityType="paisaModel.ProtocoloDetalleEmpaque" />
+          <EntitySet Name="ProtocoloDetalleExigenciasCliente" EntityType="paisaModel.ProtocoloDetalleExigenciasCliente" />
+          <EntitySet Name="ProtocoloDetalleFardo" EntityType="paisaModel.ProtocoloDetalleFardo" />
+          <EntitySet Name="ProtocoloEncabezado" EntityType="paisaModel.ProtocoloEncabezado" />
+          <EntitySet Name="TipoCaja" EntityType="paisaModel.TipoCaja" />
+          <EntitySet Name="TipoExigencia" EntityType="paisaModel.TipoExigencia" />
+          <EntitySet Name="TipoTape" EntityType="paisaModel.TipoTape" />
+          <EntitySet Name="TipoTermoencogible" EntityType="paisaModel.TipoTermoencogible" />
+          <AssociationSet Name="FK_TipoTermoEnc" Association="paisaModel.FK_TipoTermoEnc">
+            <End Role="TipoTermoencogible" EntitySet="TipoTermoencogible" />
+            <End Role="ProtocoloDetalleEmpaque" EntitySet="ProtocoloDetalleEmpaque" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloEncabezado22" Association="paisaModel.RefProtocoloEncabezado22">
+            <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
+            <End Role="ProtocoloDetalleEmpaque" EntitySet="ProtocoloDetalleEmpaque" />
+          </AssociationSet>
+          <AssociationSet Name="RefTipoCaja45" Association="paisaModel.RefTipoCaja45">
+            <End Role="TipoCaja" EntitySet="TipoCaja" />
+            <End Role="ProtocoloDetalleEmpaque" EntitySet="ProtocoloDetalleEmpaque" />
+          </AssociationSet>
+          <AssociationSet Name="RefTipoTape46" Association="paisaModel.RefTipoTape46">
+            <End Role="TipoTape" EntitySet="TipoTape" />
+            <End Role="ProtocoloDetalleEmpaque" EntitySet="ProtocoloDetalleEmpaque" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloEncabezado19" Association="paisaModel.RefProtocoloEncabezado19">
+            <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
+            <End Role="ProtocoloDetalleExigenciasCliente" EntitySet="ProtocoloDetalleExigenciasCliente" />
+          </AssociationSet>
+          <AssociationSet Name="RefTipoExigencia43" Association="paisaModel.RefTipoExigencia43">
+            <End Role="TipoExigencia" EntitySet="TipoExigencia" />
+            <End Role="ProtocoloDetalleExigenciasCliente" EntitySet="ProtocoloDetalleExigenciasCliente" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloEncabezado20" Association="paisaModel.RefProtocoloEncabezado20">
+            <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
+            <End Role="ProtocoloDetalleFardo" EntitySet="ProtocoloDetalleFardo" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloEncabezado23" Association="paisaModel.RefProtocoloEncabezado23">
+            <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
             <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
           </AssociationSet>
         </EntityContainer>
@@ -573,6 +845,7 @@
           <NavigationProperty Name="EspecificacionImpresion" Relationship="paisaModel.RefEspecificacionImpresion28" FromRole="ProtocoloDetalleImpresion" ToRole="EspecificacionImpresion" />
           <NavigationProperty Name="RodilloImpresion" Relationship="paisaModel.RefRodilloImpresion54" FromRole="ProtocoloDetalleImpresion" ToRole="RodilloImpresion" />
           <NavigationProperty Name="TipoImpresion" Relationship="paisaModel.RefTipoImpresion27" FromRole="ProtocoloDetalleImpresion" ToRole="TipoImpresion" />
+          <NavigationProperty Name="ProtocoloEncabezado" Relationship="paisaModel.RefProtocoloEncabezado23" FromRole="ProtocoloDetalleImpresion" ToRole="ProtocoloEncabezado" />
         </EntityType>
         <Association Name="RefEspecificacionImpresion28">
           <End Type="paisaModel.EspecificacionImpresion" Role="EspecificacionImpresion" Multiplicity="1" />
@@ -607,6 +880,213 @@
             </Principal>
             <Dependent Role="ProtocoloDetalleImpresion">
               <PropertyRef Name="idTipoImpresion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProtocoloDetalleEmpaque">
+          <Key>
+            <PropertyRef Name="idProtocoloDetEmpaque" />
+          </Key>
+          <Property Name="idProtocoloDetEmpaque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEncabezado" Type="Int32" Nullable="false" />
+          <Property Name="CantEmpaquePrim" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CantPaqueteEmpaqueSec" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MillaresPorFardo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="idTipoTermoE" Type="Int32" />
+          <Property Name="idTipoCaja" Type="Int32" />
+          <Property Name="idTipoTape" Type="Int32" />
+          <Property Name="Otros" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TipoTermoencogible" Relationship="paisaModel.FK_TipoTermoEnc" FromRole="ProtocoloDetalleEmpaque" ToRole="TipoTermoencogible" />
+          <NavigationProperty Name="ProtocoloEncabezado" Relationship="paisaModel.RefProtocoloEncabezado22" FromRole="ProtocoloDetalleEmpaque" ToRole="ProtocoloEncabezado" />
+          <NavigationProperty Name="TipoCaja" Relationship="paisaModel.RefTipoCaja45" FromRole="ProtocoloDetalleEmpaque" ToRole="TipoCaja" />
+          <NavigationProperty Name="TipoTape" Relationship="paisaModel.RefTipoTape46" FromRole="ProtocoloDetalleEmpaque" ToRole="TipoTape" />
+        </EntityType>
+        <EntityType Name="ProtocoloDetalleExigenciasCliente">
+          <Key>
+            <PropertyRef Name="idProtocoloDetExiCliente" />
+          </Key>
+          <Property Name="idProtocoloDetExiCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEncabezado" Type="Int32" Nullable="false" />
+          <Property Name="idTipoExigencia" Type="Int32" />
+          <Property Name="Otros" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloEncabezado" Relationship="paisaModel.RefProtocoloEncabezado19" FromRole="ProtocoloDetalleExigenciasCliente" ToRole="ProtocoloEncabezado" />
+          <NavigationProperty Name="TipoExigencia" Relationship="paisaModel.RefTipoExigencia43" FromRole="ProtocoloDetalleExigenciasCliente" ToRole="TipoExigencia" />
+        </EntityType>
+        <EntityType Name="ProtocoloDetalleFardo">
+          <Key>
+            <PropertyRef Name="idProtocoloDetFardo" />
+          </Key>
+          <Property Name="idProtocoloDetFardo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEncabezado" Type="Int32" Nullable="false" />
+          <Property Name="InformacionCompleda" Type="Boolean" />
+          <Property Name="InformacionPaisa" Type="Boolean" />
+          <Property Name="Otros" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloEncabezado" Relationship="paisaModel.RefProtocoloEncabezado20" FromRole="ProtocoloDetalleFardo" ToRole="ProtocoloEncabezado" />
+        </EntityType>
+        <EntityType Name="ProtocoloEncabezado">
+          <Key>
+            <PropertyRef Name="IdEncabezado" />
+          </Key>
+          <Property Name="IdEncabezado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoVendedor" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="NombreProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoCliente" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="CVE_ART" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Version" Type="Int32" />
+          <Property Name="ObservacionesGenerales" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EsAutorizado" Type="Boolean" />
+          <Property Name="usuarioAutoriza" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="fechaAutoriza" Type="DateTime" Precision="3" />
+          <Property Name="EstaProduccion" Type="Boolean" />
+          <Property Name="usuarioProduccion" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="fechaProduccion" Type="DateTime" Precision="3" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleEmpaque" Relationship="paisaModel.RefProtocoloEncabezado22" FromRole="ProtocoloEncabezado" ToRole="ProtocoloDetalleEmpaque" />
+          <NavigationProperty Name="ProtocoloDetalleExigenciasCliente" Relationship="paisaModel.RefProtocoloEncabezado19" FromRole="ProtocoloEncabezado" ToRole="ProtocoloDetalleExigenciasCliente" />
+          <NavigationProperty Name="ProtocoloDetalleFardo" Relationship="paisaModel.RefProtocoloEncabezado20" FromRole="ProtocoloEncabezado" ToRole="ProtocoloDetalleFardo" />
+          <NavigationProperty Name="ProtocoloDetalleImpresion" Relationship="paisaModel.RefProtocoloEncabezado23" FromRole="ProtocoloEncabezado" ToRole="ProtocoloDetalleImpresion" />
+        </EntityType>
+        <EntityType Name="TipoCaja">
+          <Key>
+            <PropertyRef Name="idTipoCaja" />
+          </Key>
+          <Property Name="idTipoCaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcionC" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleEmpaque" Relationship="paisaModel.RefTipoCaja45" FromRole="TipoCaja" ToRole="ProtocoloDetalleEmpaque" />
+        </EntityType>
+        <EntityType Name="TipoExigencia">
+          <Key>
+            <PropertyRef Name="idTipoExigencia" />
+          </Key>
+          <Property Name="idTipoExigencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleExigenciasCliente" Relationship="paisaModel.RefTipoExigencia43" FromRole="TipoExigencia" ToRole="ProtocoloDetalleExigenciasCliente" />
+        </EntityType>
+        <EntityType Name="TipoTape">
+          <Key>
+            <PropertyRef Name="idTipoTape" />
+          </Key>
+          <Property Name="idTipoTape" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleEmpaque" Relationship="paisaModel.RefTipoTape46" FromRole="TipoTape" ToRole="ProtocoloDetalleEmpaque" />
+        </EntityType>
+        <EntityType Name="TipoTermoencogible">
+          <Key>
+            <PropertyRef Name="idTipoTermoE" />
+          </Key>
+          <Property Name="idTipoTermoE" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleEmpaque" Relationship="paisaModel.FK_TipoTermoEnc" FromRole="TipoTermoencogible" ToRole="ProtocoloDetalleEmpaque" />
+        </EntityType>
+        <Association Name="FK_TipoTermoEnc">
+          <End Type="paisaModel.TipoTermoencogible" Role="TipoTermoencogible" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleEmpaque" Role="ProtocoloDetalleEmpaque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTermoencogible">
+              <PropertyRef Name="idTipoTermoE" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleEmpaque">
+              <PropertyRef Name="idTipoTermoE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloEncabezado22">
+          <End Type="paisaModel.ProtocoloEncabezado" Role="ProtocoloEncabezado" Multiplicity="1" />
+          <End Type="paisaModel.ProtocoloDetalleEmpaque" Role="ProtocoloDetalleEmpaque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloEncabezado">
+              <PropertyRef Name="IdEncabezado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleEmpaque">
+              <PropertyRef Name="IdEncabezado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTipoCaja45">
+          <End Type="paisaModel.TipoCaja" Role="TipoCaja" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleEmpaque" Role="ProtocoloDetalleEmpaque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCaja">
+              <PropertyRef Name="idTipoCaja" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleEmpaque">
+              <PropertyRef Name="idTipoCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTipoTape46">
+          <End Type="paisaModel.TipoTape" Role="TipoTape" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleEmpaque" Role="ProtocoloDetalleEmpaque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoTape">
+              <PropertyRef Name="idTipoTape" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleEmpaque">
+              <PropertyRef Name="idTipoTape" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloEncabezado19">
+          <End Type="paisaModel.ProtocoloEncabezado" Role="ProtocoloEncabezado" Multiplicity="1" />
+          <End Type="paisaModel.ProtocoloDetalleExigenciasCliente" Role="ProtocoloDetalleExigenciasCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloEncabezado">
+              <PropertyRef Name="IdEncabezado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleExigenciasCliente">
+              <PropertyRef Name="IdEncabezado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTipoExigencia43">
+          <End Type="paisaModel.TipoExigencia" Role="TipoExigencia" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleExigenciasCliente" Role="ProtocoloDetalleExigenciasCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoExigencia">
+              <PropertyRef Name="idTipoExigencia" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleExigenciasCliente">
+              <PropertyRef Name="idTipoExigencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloEncabezado20">
+          <End Type="paisaModel.ProtocoloEncabezado" Role="ProtocoloEncabezado" Multiplicity="1" />
+          <End Type="paisaModel.ProtocoloDetalleFardo" Role="ProtocoloDetalleFardo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloEncabezado">
+              <PropertyRef Name="IdEncabezado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleFardo">
+              <PropertyRef Name="IdEncabezado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloEncabezado23">
+          <End Type="paisaModel.ProtocoloEncabezado" Role="ProtocoloEncabezado" Multiplicity="1" />
+          <End Type="paisaModel.ProtocoloDetalleImpresion" Role="ProtocoloDetalleImpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloEncabezado">
+              <PropertyRef Name="IdEncabezado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleImpresion">
+              <PropertyRef Name="IdEncabezado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -754,6 +1234,110 @@
                 <ScalarProperty Name="idEspecificacionImpresion" ColumnName="idEspecificacionImpresion" />
                 <ScalarProperty Name="IdEncabezado" ColumnName="IdEncabezado" />
                 <ScalarProperty Name="idProtocoloDetImpresion" ColumnName="idProtocoloDetImpresion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProtocoloDetalleEmpaque">
+            <EntityTypeMapping TypeName="paisaModel.ProtocoloDetalleEmpaque">
+              <MappingFragment StoreEntitySet="ProtocoloDetalleEmpaque">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="Otros" ColumnName="Otros" />
+                <ScalarProperty Name="idTipoTape" ColumnName="idTipoTape" />
+                <ScalarProperty Name="idTipoCaja" ColumnName="idTipoCaja" />
+                <ScalarProperty Name="idTipoTermoE" ColumnName="idTipoTermoE" />
+                <ScalarProperty Name="MillaresPorFardo" ColumnName="MillaresPorFardo" />
+                <ScalarProperty Name="CantPaqueteEmpaqueSec" ColumnName="CantPaqueteEmpaqueSec" />
+                <ScalarProperty Name="CantEmpaquePrim" ColumnName="CantEmpaquePrim" />
+                <ScalarProperty Name="IdEncabezado" ColumnName="IdEncabezado" />
+                <ScalarProperty Name="idProtocoloDetEmpaque" ColumnName="idProtocoloDetEmpaque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProtocoloDetalleExigenciasCliente">
+            <EntityTypeMapping TypeName="paisaModel.ProtocoloDetalleExigenciasCliente">
+              <MappingFragment StoreEntitySet="ProtocoloDetalleExigenciasCliente">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="Otros" ColumnName="Otros" />
+                <ScalarProperty Name="idTipoExigencia" ColumnName="idTipoExigencia" />
+                <ScalarProperty Name="IdEncabezado" ColumnName="IdEncabezado" />
+                <ScalarProperty Name="idProtocoloDetExiCliente" ColumnName="idProtocoloDetExiCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProtocoloDetalleFardo">
+            <EntityTypeMapping TypeName="paisaModel.ProtocoloDetalleFardo">
+              <MappingFragment StoreEntitySet="ProtocoloDetalleFardo">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="Otros" ColumnName="Otros" />
+                <ScalarProperty Name="InformacionPaisa" ColumnName="InformacionPaisa" />
+                <ScalarProperty Name="InformacionCompleda" ColumnName="InformacionCompleda" />
+                <ScalarProperty Name="IdEncabezado" ColumnName="IdEncabezado" />
+                <ScalarProperty Name="idProtocoloDetFardo" ColumnName="idProtocoloDetFardo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProtocoloEncabezado">
+            <EntityTypeMapping TypeName="paisaModel.ProtocoloEncabezado">
+              <MappingFragment StoreEntitySet="ProtocoloEncabezado">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="fechaProduccion" ColumnName="fechaProduccion" />
+                <ScalarProperty Name="usuarioProduccion" ColumnName="usuarioProduccion" />
+                <ScalarProperty Name="EstaProduccion" ColumnName="EstaProduccion" />
+                <ScalarProperty Name="fechaAutoriza" ColumnName="fechaAutoriza" />
+                <ScalarProperty Name="usuarioAutoriza" ColumnName="usuarioAutoriza" />
+                <ScalarProperty Name="EsAutorizado" ColumnName="EsAutorizado" />
+                <ScalarProperty Name="ObservacionesGenerales" ColumnName="ObservacionesGenerales" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="CVE_ART" ColumnName="CVE_ART" />
+                <ScalarProperty Name="CodigoCliente" ColumnName="CodigoCliente" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="codigoVendedor" ColumnName="codigoVendedor" />
+                <ScalarProperty Name="IdEncabezado" ColumnName="IdEncabezado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCaja">
+            <EntityTypeMapping TypeName="paisaModel.TipoCaja">
+              <MappingFragment StoreEntitySet="TipoCaja">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="descripcionC" ColumnName="descripcionC" />
+                <ScalarProperty Name="idTipoCaja" ColumnName="idTipoCaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoExigencia">
+            <EntityTypeMapping TypeName="paisaModel.TipoExigencia">
+              <MappingFragment StoreEntitySet="TipoExigencia">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idTipoExigencia" ColumnName="idTipoExigencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoTape">
+            <EntityTypeMapping TypeName="paisaModel.TipoTape">
+              <MappingFragment StoreEntitySet="TipoTape">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idTipoTape" ColumnName="idTipoTape" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoTermoencogible">
+            <EntityTypeMapping TypeName="paisaModel.TipoTermoencogible">
+              <MappingFragment StoreEntitySet="TipoTermoencogible">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idTipoTermoE" ColumnName="idTipoTermoE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

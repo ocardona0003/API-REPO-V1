@@ -12,22 +12,23 @@ namespace API_Paisa_v1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ProtocoloDetalleImpresion
+    public partial class ProtocoloDetalleEmpaque
     {
-        public int idProtocoloDetImpresion { get; set; }
+        public int idProtocoloDetEmpaque { get; set; }
         public int IdEncabezado { get; set; }
-        public int idEspecificacionImpresion { get; set; }
-        public Nullable<int> idRodilloImpresion { get; set; }
-        public Nullable<int> CantColores { get; set; }
-        public Nullable<decimal> NoRepeticion { get; set; }
-        public Nullable<decimal> NoPistas { get; set; }
-        public int idTipoImpresion { get; set; }
+        public Nullable<decimal> CantEmpaquePrim { get; set; }
+        public Nullable<decimal> CantPaqueteEmpaqueSec { get; set; }
+        public Nullable<decimal> MillaresPorFardo { get; set; }
+        public Nullable<int> idTipoTermoE { get; set; }
+        public Nullable<int> idTipoCaja { get; set; }
+        public Nullable<int> idTipoTape { get; set; }
+        public string Otros { get; set; }
         public Nullable<int> ultimoUsr { get; set; }
         public Nullable<System.DateTime> ultimaFec { get; set; }
     
-        public virtual EspecificacionImpresion EspecificacionImpresion { get; set; }
-        public virtual RodilloImpresion RodilloImpresion { get; set; }
-        public virtual TipoImpresion TipoImpresion { get; set; }
+        public virtual TipoTermoencogible TipoTermoencogible { get; set; }
         public virtual ProtocoloEncabezado ProtocoloEncabezado { get; set; }
+        public virtual TipoCaja TipoCaja { get; set; }
+        public virtual TipoTape TipoTape { get; set; }
     }
 }
