@@ -45,6 +45,7 @@ namespace API_Paisa_v1.Controllers._04._ProtocoloMaterial
             {
                 return BadRequest(ModelState);
             }
+
             if (calibre2Caras.ultimoUsr == null || calibre2Caras.ultimoUsr == 0)
             {
                 return BadRequest("no hay usuario para guardar");
