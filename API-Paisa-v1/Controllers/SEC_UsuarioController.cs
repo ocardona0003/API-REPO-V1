@@ -97,7 +97,7 @@ namespace API_Paisa_v1.Controllers
             db.SEC_Usuario.Remove(sEC_Usuario);
             db.SaveChanges();
 
-            return Ok(sEC_Usuario);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

@@ -22,10 +22,6 @@ namespace API_Paisa_v1.Controllers
         // GET: api/SEC_TipoUsuario
         public IQueryable<SEC_TipoUsuario> GetSEC_TipoUsuario()
         {
-            //var data = db.SEC_TipoUsuario;
-            //List<SEC_TipoUsuario> list = new List<SEC_TipoUsuario>();
-            //list = data.ToList();
-            //return Ok(list);
             return db.SEC_TipoUsuario;
         }
 
