@@ -201,6 +201,7 @@
     <Compile Include="Controllers\02. ProtocoloDetalleImpresion\EspecificacionImpresionesController.cs" />
     <Compile Include="Controllers\01. Seguridad\HomeController.cs" />
     <Compile Include="Controllers\01. Seguridad\LoginController.cs" />
+    <Compile Include="Controllers\02. ProtocoloDetalleImpresion\ImagenDetalleImpresionesController.cs" />
     <Compile Include="Controllers\02. ProtocoloDetalleImpresion\ProtocoloDetalleImpresionesController.cs" />
     <Compile Include="Controllers\02. ProtocoloDetalleImpresion\RodilloImpresionesController.cs" />
     <Compile Include="Controllers\01. Seguridad\SEC_PermisoConTipoUsuarioController.cs" />
