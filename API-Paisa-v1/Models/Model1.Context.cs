@@ -31,6 +31,9 @@ namespace API_Paisa_v1.Models
         public virtual DbSet<SEC_Permisos> SEC_Permisos { get; set; }
         public virtual DbSet<SEC_TipoUsuario> SEC_TipoUsuario { get; set; }
         public virtual DbSet<SEC_Usuario> SEC_Usuario { get; set; }
+        public virtual DbSet<EspecificacionImpresion> EspecificacionImpresion { get; set; }
+        public virtual DbSet<RodilloImpresion> RodilloImpresion { get; set; }
+        public virtual DbSet<TipoImpresion> TipoImpresion { get; set; }
     
         public virtual ObjectResult<sp_V_SEC_Usuario_Result> sp_V_SEC_Usuario()
         {
