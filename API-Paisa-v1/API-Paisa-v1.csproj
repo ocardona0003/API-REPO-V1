@@ -211,6 +211,7 @@
     <Compile Include="Controllers\02. ProtocoloDetalleImpresion\TipoImpresionsController.cs" />
     <Compile Include="Controllers\01. Seguridad\TokenGenerator.cs" />
     <Compile Include="Controllers\01. Seguridad\TokenValidationHandler.cs" />
+    <Compile Include="Controllers\03. ProtocoloEncabezados\TipoCajasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
