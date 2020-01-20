@@ -197,7 +197,7 @@
           <Key>
             <PropertyRef Name="idTipoTermoE" />
           </Key>
-          <Property Name="idTipoTermoE" Type="int" Nullable="false" />
+          <Property Name="idTipoTermoE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
