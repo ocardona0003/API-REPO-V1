@@ -198,17 +198,18 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="ClaseGlobal.cs" />
-    <Compile Include="Controllers\EspecificacionImpresionesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\RodilloImpresionesController.cs" />
-    <Compile Include="Controllers\SEC_PermisoConTipoUsuarioController.cs" />
-    <Compile Include="Controllers\SEC_PermisosController.cs" />
-    <Compile Include="Controllers\SEC_TipoUsuarioController.cs" />
-    <Compile Include="Controllers\SEC_UsuarioController.cs" />
-    <Compile Include="Controllers\TipoImpresionsController.cs" />
-    <Compile Include="Controllers\TokenGenerator.cs" />
-    <Compile Include="Controllers\TokenValidationHandler.cs" />
+    <Compile Include="Controllers\02. ProtocoloDetalleImpresion\EspecificacionImpresionesController.cs" />
+    <Compile Include="Controllers\01. Seguridad\HomeController.cs" />
+    <Compile Include="Controllers\01. Seguridad\LoginController.cs" />
+    <Compile Include="Controllers\02. ProtocoloDetalleImpresion\ProtocoloDetalleImpresionesController.cs" />
+    <Compile Include="Controllers\02. ProtocoloDetalleImpresion\RodilloImpresionesController.cs" />
+    <Compile Include="Controllers\01. Seguridad\SEC_PermisoConTipoUsuarioController.cs" />
+    <Compile Include="Controllers\01. Seguridad\SEC_PermisosController.cs" />
+    <Compile Include="Controllers\01. Seguridad\SEC_TipoUsuarioController.cs" />
+    <Compile Include="Controllers\01. Seguridad\SEC_UsuarioController.cs" />
+    <Compile Include="Controllers\02. ProtocoloDetalleImpresion\TipoImpresionsController.cs" />
+    <Compile Include="Controllers\01. Seguridad\TokenGenerator.cs" />
+    <Compile Include="Controllers\01. Seguridad\TokenValidationHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
