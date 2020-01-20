@@ -46,11 +46,6 @@ namespace API_Paisa_v1.Controllers._03._ProtocoloEncabezados
                 return BadRequest(ModelState);
             }
 
-            if (id != protocoloDetalleEmpaque.idProtocoloDetEmpaque)
-            {
-                return BadRequest();
-            }
-
             if (protocoloDetalleEmpaque.ultimoUsr == null || protocoloDetalleEmpaque.ultimoUsr == 0)
             {
                 return BadRequest("no hay usuario para guardar");
