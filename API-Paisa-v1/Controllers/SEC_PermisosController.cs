@@ -68,7 +68,7 @@ namespace API_Paisa_v1.Controllers
                     throw;
                 }
             }
-            return Ok();
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/SEC_Permisos

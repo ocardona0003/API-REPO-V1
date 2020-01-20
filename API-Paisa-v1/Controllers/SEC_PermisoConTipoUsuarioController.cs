@@ -12,8 +12,6 @@ using API_Paisa_v1.Models;
 
 namespace API_Paisa_v1.Controllers
 {
-    [Authorize]
-    [RoutePrefix("api/SEC_PermisoConTipoUsuario")]
     public class SEC_PermisoConTipoUsuarioController : ApiController
     {
         private paisaEntities db = new paisaEntities();
@@ -39,14 +37,18 @@ namespace API_Paisa_v1.Controllers
 
         // PUT: api/SEC_PermisoConTipoUsuario/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutSEC_PermisoConTipoUsuario(SEC_PermisoConTipoUsuario sEC_PermisoConTipoUsuario)
+        public IHttpActionResult PutSEC_PermisoConTipoUsuario(int id, SEC_PermisoConTipoUsuario sEC_PermisoConTipoUsuario)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            sEC_PermisoConTipoUsuario.ultimaFecha = DateTime.Now;
+            if (id != sEC_PermisoConTipoUsuario.idPermisoConTipoUsuario)
+            {
+                return BadRequest();
+            }
+
             db.Entry(sEC_PermisoConTipoUsuario).State = EntityState.Modified;
 
             try
@@ -55,7 +57,7 @@ namespace API_Paisa_v1.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SEC_PermisoConTipoUsuarioExists(sEC_PermisoConTipoUsuario.idPermisoConTipoUsuario))
+                if (!SEC_PermisoConTipoUsuarioExists(id))
                 {
                     return NotFound();
                 }
@@ -64,7 +66,8 @@ namespace API_Paisa_v1.Controllers
                     throw;
                 }
             }
-            return Ok(sEC_PermisoConTipoUsuario);
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/SEC_PermisoConTipoUsuario
@@ -75,7 +78,7 @@ namespace API_Paisa_v1.Controllers
             {
                 return BadRequest(ModelState);
             }
-            sEC_PermisoConTipoUsuario.ultimaFecha = DateTime.Now;
+
             db.SEC_PermisoConTipoUsuario.Add(sEC_PermisoConTipoUsuario);
             db.SaveChanges();
 
@@ -95,7 +98,7 @@ namespace API_Paisa_v1.Controllers
             db.SEC_PermisoConTipoUsuario.Remove(sEC_PermisoConTipoUsuario);
             db.SaveChanges();
 
-            return Ok();
+            return Ok(sEC_PermisoConTipoUsuario);
         }
 
         protected override void Dispose(bool disposing)
