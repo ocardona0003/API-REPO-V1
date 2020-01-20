@@ -213,6 +213,7 @@
     <Compile Include="Controllers\01. Seguridad\TokenValidationHandler.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\ProtocoloDetalleEmpaquesController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\TipoCajasController.cs" />
+    <Compile Include="Controllers\03. ProtocoloEncabezados\TipoExigenciasController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\TipoTapesController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\TipoTermoencogiblesController.cs" />
     <Compile Include="Global.asax.cs">
