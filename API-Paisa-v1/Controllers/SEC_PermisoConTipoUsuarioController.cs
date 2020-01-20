@@ -12,6 +12,8 @@ using API_Paisa_v1.Models;
 
 namespace API_Paisa_v1.Controllers
 {
+    [Authorize]
+    [RoutePrefix("api/SEC_PermisoConTipoUsuario")]
     public class SEC_PermisoConTipoUsuarioController : ApiController
     {
         private paisaEntities db = new paisaEntities();
