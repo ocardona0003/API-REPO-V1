@@ -13,7 +13,7 @@ using API_Paisa_v1.Models;
 namespace API_Paisa_v1.Controllers._04._ProtocoloMaterial
 {
     [Authorize]
-    [RoutePrefix("api/Calibre2Caras")]
+    [RoutePrefix("api/TipoSellos")]
     public class TipoSellosController : ApiController
     {
         private paisaEntities db = new paisaEntities();
