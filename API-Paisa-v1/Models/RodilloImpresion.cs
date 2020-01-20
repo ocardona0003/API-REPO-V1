@@ -14,6 +14,12 @@ namespace API_Paisa_v1.Models
     
     public partial class RodilloImpresion
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public RodilloImpresion()
+        {
+            this.ProtocoloDetalleImpresion = new HashSet<ProtocoloDetalleImpresion>();
+        }
+    
         public int idRodilloImpresion { get; set; }
         public Nullable<int> CantidadRodxMedida { get; set; }
         public string Engranaje { get; set; }
@@ -21,5 +27,8 @@ namespace API_Paisa_v1.Models
         public Nullable<int> CantColores { get; set; }
         public Nullable<int> ultimoUsr { get; set; }
         public Nullable<System.DateTime> ultimaFec { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProtocoloDetalleImpresion> ProtocoloDetalleImpresion { get; set; }
     }
 }

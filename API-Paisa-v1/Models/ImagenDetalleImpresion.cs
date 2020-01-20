@@ -12,20 +12,16 @@ namespace API_Paisa_v1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TipoImpresion
+    public partial class ImagenDetalleImpresion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TipoImpresion()
-        {
-            this.ProtocoloDetalleImpresion = new HashSet<ProtocoloDetalleImpresion>();
-        }
-    
-        public int idTipoImpresion { get; set; }
-        public string descripcion { get; set; }
+        public int idImagenDetImpresion { get; set; }
+        public int idProtocoloDetImpresion { get; set; }
+        public string server { get; set; }
+        public string descripcionImg { get; set; }
+        public string ruta { get; set; }
+        public string nombreArchivo { get; set; }
+        public string extension { get; set; }
         public Nullable<int> ultimoUsr { get; set; }
         public Nullable<System.DateTime> ultimaFec { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProtocoloDetalleImpresion> ProtocoloDetalleImpresion { get; set; }
     }
 }

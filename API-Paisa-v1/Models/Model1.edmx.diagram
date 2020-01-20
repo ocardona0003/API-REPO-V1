@@ -15,6 +15,11 @@
         <EntityTypeShape EntityType="paisaModel.EspecificacionImpresion" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="paisaModel.RodilloImpresion" Width="1.5" PointX="5.375" PointY="3.75" />
         <EntityTypeShape EntityType="paisaModel.TipoImpresion" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="paisaModel.ImagenDetalleImpresion" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="paisaModel.ProtocoloDetalleImpresion" Width="1.5" PointX="9.625" PointY="1.75" />
+        <AssociationConnector Association="paisaModel.RefEspecificacionImpresion28" />
+        <AssociationConnector Association="paisaModel.RefRodilloImpresion54" />
+        <AssociationConnector Association="paisaModel.RefTipoImpresion27" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

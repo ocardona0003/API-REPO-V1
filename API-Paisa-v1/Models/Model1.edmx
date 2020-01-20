@@ -14,6 +14,35 @@
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
         </EntityType>
+        <EntityType Name="ImagenDetalleImpresion">
+          <Key>
+            <PropertyRef Name="idImagenDetImpresion" />
+          </Key>
+          <Property Name="idImagenDetImpresion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProtocoloDetImpresion" Type="int" Nullable="false" />
+          <Property Name="server" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcionImg" Type="varchar" MaxLength="50" />
+          <Property Name="ruta" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nombreArchivo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="extension" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProtocoloDetalleImpresion">
+          <Key>
+            <PropertyRef Name="idProtocoloDetImpresion" />
+          </Key>
+          <Property Name="idProtocoloDetImpresion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEncabezado" Type="int" Nullable="false" />
+          <Property Name="idEspecificacionImpresion" Type="int" Nullable="false" />
+          <Property Name="idRodilloImpresion" Type="int" />
+          <Property Name="CantColores" Type="int" />
+          <Property Name="NoRepeticion" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NoPistas" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="idTipoImpresion" Type="int" Nullable="false" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
         <EntityType Name="RodilloImpresion">
           <Key>
             <PropertyRef Name="idRodilloImpresion" />
@@ -77,6 +106,30 @@
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
         </EntityType>
+        <Association Name="RefEspecificacionImpresion28">
+          <End Role="EspecificacionImpresion" Type="Self.EspecificacionImpresion" Multiplicity="1" />
+          <End Role="ProtocoloDetalleImpresion" Type="Self.ProtocoloDetalleImpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EspecificacionImpresion">
+              <PropertyRef Name="idEspecificacionImpresion" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleImpresion">
+              <PropertyRef Name="idEspecificacionImpresion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefRodilloImpresion54">
+          <End Role="RodilloImpresion" Type="Self.RodilloImpresion" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleImpresion" Type="Self.ProtocoloDetalleImpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodilloImpresion">
+              <PropertyRef Name="idRodilloImpresion" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleImpresion">
+              <PropertyRef Name="idRodilloImpresion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RefSEC_Permisos561">
           <End Role="SEC_Permisos" Type="Self.SEC_Permisos" Multiplicity="1" />
           <End Role="SEC_PermisoConTipoUsuario" Type="Self.SEC_PermisoConTipoUsuario" Multiplicity="*" />
@@ -113,6 +166,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="RefTipoImpresion27">
+          <End Role="TipoImpresion" Type="Self.TipoImpresion" Multiplicity="1" />
+          <End Role="ProtocoloDetalleImpresion" Type="Self.ProtocoloDetalleImpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoImpresion">
+              <PropertyRef Name="idTipoImpresion" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleImpresion">
+              <PropertyRef Name="idTipoImpresion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="sp_I_SEC_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idTipoUsuario" Type="int" Mode="In" />
           <Parameter Name="codUsuario" Type="varchar" Mode="In" />
@@ -141,12 +206,22 @@
         <Function Name="sp_V_SEC_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="paisaModelStoreContainer">
           <EntitySet Name="EspecificacionImpresion" EntityType="Self.EspecificacionImpresion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImagenDetalleImpresion" EntityType="Self.ImagenDetalleImpresion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProtocoloDetalleImpresion" EntityType="Self.ProtocoloDetalleImpresion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RodilloImpresion" EntityType="Self.RodilloImpresion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_PermisoConTipoUsuario" EntityType="Self.SEC_PermisoConTipoUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_Permisos" EntityType="Self.SEC_Permisos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_TipoUsuario" EntityType="Self.SEC_TipoUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_Usuario" EntityType="Self.SEC_Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoImpresion" EntityType="Self.TipoImpresion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="RefEspecificacionImpresion28" Association="Self.RefEspecificacionImpresion28">
+            <End Role="EspecificacionImpresion" EntitySet="EspecificacionImpresion" />
+            <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
+          </AssociationSet>
+          <AssociationSet Name="RefRodilloImpresion54" Association="Self.RefRodilloImpresion54">
+            <End Role="RodilloImpresion" EntitySet="RodilloImpresion" />
+            <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
+          </AssociationSet>
           <AssociationSet Name="RefSEC_Permisos561" Association="Self.RefSEC_Permisos561">
             <End Role="SEC_Permisos" EntitySet="SEC_Permisos" />
             <End Role="SEC_PermisoConTipoUsuario" EntitySet="SEC_PermisoConTipoUsuario" />
@@ -158,6 +233,10 @@
           <AssociationSet Name="RefSEC_TipoUsuario571" Association="Self.RefSEC_TipoUsuario571">
             <End Role="SEC_TipoUsuario" EntitySet="SEC_TipoUsuario" />
             <End Role="SEC_Usuario" EntitySet="SEC_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="RefTipoImpresion27" Association="Self.RefTipoImpresion27">
+            <End Role="TipoImpresion" EntitySet="TipoImpresion" />
+            <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -273,6 +352,20 @@
           <EntitySet Name="EspecificacionImpresion" EntityType="paisaModel.EspecificacionImpresion" />
           <EntitySet Name="RodilloImpresion" EntityType="paisaModel.RodilloImpresion" />
           <EntitySet Name="TipoImpresion" EntityType="paisaModel.TipoImpresion" />
+          <EntitySet Name="ImagenDetalleImpresion" EntityType="paisaModel.ImagenDetalleImpresion" />
+          <EntitySet Name="ProtocoloDetalleImpresion" EntityType="paisaModel.ProtocoloDetalleImpresion" />
+          <AssociationSet Name="RefEspecificacionImpresion28" Association="paisaModel.RefEspecificacionImpresion28">
+            <End Role="EspecificacionImpresion" EntitySet="EspecificacionImpresion" />
+            <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
+          </AssociationSet>
+          <AssociationSet Name="RefRodilloImpresion54" Association="paisaModel.RefRodilloImpresion54">
+            <End Role="RodilloImpresion" EntitySet="RodilloImpresion" />
+            <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
+          </AssociationSet>
+          <AssociationSet Name="RefTipoImpresion27" Association="paisaModel.RefTipoImpresion27">
+            <End Role="TipoImpresion" EntitySet="TipoImpresion" />
+            <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_V_SEC_Usuario_Result">
           <Property Type="Int32" Name="idUsuario" Nullable="false" />
@@ -424,6 +517,7 @@
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ultimoUsr" Type="Int32" />
           <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleImpresion" Relationship="paisaModel.RefEspecificacionImpresion28" FromRole="EspecificacionImpresion" ToRole="ProtocoloDetalleImpresion" />
         </EntityType>
         <EntityType Name="RodilloImpresion">
           <Key>
@@ -436,6 +530,7 @@
           <Property Name="CantColores" Type="Int32" />
           <Property Name="ultimoUsr" Type="Int32" />
           <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleImpresion" Relationship="paisaModel.RefRodilloImpresion54" FromRole="RodilloImpresion" ToRole="ProtocoloDetalleImpresion" />
         </EntityType>
         <EntityType Name="TipoImpresion">
           <Key>
@@ -445,7 +540,76 @@
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ultimoUsr" Type="Int32" />
           <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleImpresion" Relationship="paisaModel.RefTipoImpresion27" FromRole="TipoImpresion" ToRole="ProtocoloDetalleImpresion" />
         </EntityType>
+        <EntityType Name="ImagenDetalleImpresion">
+          <Key>
+            <PropertyRef Name="idImagenDetImpresion" />
+          </Key>
+          <Property Name="idImagenDetImpresion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProtocoloDetImpresion" Type="Int32" Nullable="false" />
+          <Property Name="server" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcionImg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ruta" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombreArchivo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="extension" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProtocoloDetalleImpresion">
+          <Key>
+            <PropertyRef Name="idProtocoloDetImpresion" />
+          </Key>
+          <Property Name="idProtocoloDetImpresion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEncabezado" Type="Int32" Nullable="false" />
+          <Property Name="idEspecificacionImpresion" Type="Int32" Nullable="false" />
+          <Property Name="idRodilloImpresion" Type="Int32" />
+          <Property Name="CantColores" Type="Int32" />
+          <Property Name="NoRepeticion" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NoPistas" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="idTipoImpresion" Type="Int32" Nullable="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EspecificacionImpresion" Relationship="paisaModel.RefEspecificacionImpresion28" FromRole="ProtocoloDetalleImpresion" ToRole="EspecificacionImpresion" />
+          <NavigationProperty Name="RodilloImpresion" Relationship="paisaModel.RefRodilloImpresion54" FromRole="ProtocoloDetalleImpresion" ToRole="RodilloImpresion" />
+          <NavigationProperty Name="TipoImpresion" Relationship="paisaModel.RefTipoImpresion27" FromRole="ProtocoloDetalleImpresion" ToRole="TipoImpresion" />
+        </EntityType>
+        <Association Name="RefEspecificacionImpresion28">
+          <End Type="paisaModel.EspecificacionImpresion" Role="EspecificacionImpresion" Multiplicity="1" />
+          <End Type="paisaModel.ProtocoloDetalleImpresion" Role="ProtocoloDetalleImpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EspecificacionImpresion">
+              <PropertyRef Name="idEspecificacionImpresion" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleImpresion">
+              <PropertyRef Name="idEspecificacionImpresion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefRodilloImpresion54">
+          <End Type="paisaModel.RodilloImpresion" Role="RodilloImpresion" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleImpresion" Role="ProtocoloDetalleImpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodilloImpresion">
+              <PropertyRef Name="idRodilloImpresion" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleImpresion">
+              <PropertyRef Name="idRodilloImpresion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTipoImpresion27">
+          <End Type="paisaModel.TipoImpresion" Role="TipoImpresion" Multiplicity="1" />
+          <End Type="paisaModel.ProtocoloDetalleImpresion" Role="ProtocoloDetalleImpresion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoImpresion">
+              <PropertyRef Name="idTipoImpresion" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleImpresion">
+              <PropertyRef Name="idTipoImpresion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -559,6 +723,37 @@
                 <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="idTipoImpresion" ColumnName="idTipoImpresion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImagenDetalleImpresion">
+            <EntityTypeMapping TypeName="paisaModel.ImagenDetalleImpresion">
+              <MappingFragment StoreEntitySet="ImagenDetalleImpresion">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="extension" ColumnName="extension" />
+                <ScalarProperty Name="nombreArchivo" ColumnName="nombreArchivo" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="descripcionImg" ColumnName="descripcionImg" />
+                <ScalarProperty Name="server" ColumnName="server" />
+                <ScalarProperty Name="idProtocoloDetImpresion" ColumnName="idProtocoloDetImpresion" />
+                <ScalarProperty Name="idImagenDetImpresion" ColumnName="idImagenDetImpresion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProtocoloDetalleImpresion">
+            <EntityTypeMapping TypeName="paisaModel.ProtocoloDetalleImpresion">
+              <MappingFragment StoreEntitySet="ProtocoloDetalleImpresion">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="idTipoImpresion" ColumnName="idTipoImpresion" />
+                <ScalarProperty Name="NoPistas" ColumnName="NoPistas" />
+                <ScalarProperty Name="NoRepeticion" ColumnName="NoRepeticion" />
+                <ScalarProperty Name="CantColores" ColumnName="CantColores" />
+                <ScalarProperty Name="idRodilloImpresion" ColumnName="idRodilloImpresion" />
+                <ScalarProperty Name="idEspecificacionImpresion" ColumnName="idEspecificacionImpresion" />
+                <ScalarProperty Name="IdEncabezado" ColumnName="IdEncabezado" />
+                <ScalarProperty Name="idProtocoloDetImpresion" ColumnName="idProtocoloDetImpresion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -34,6 +34,8 @@ namespace API_Paisa_v1.Models
         public virtual DbSet<EspecificacionImpresion> EspecificacionImpresion { get; set; }
         public virtual DbSet<RodilloImpresion> RodilloImpresion { get; set; }
         public virtual DbSet<TipoImpresion> TipoImpresion { get; set; }
+        public virtual DbSet<ImagenDetalleImpresion> ImagenDetalleImpresion { get; set; }
+        public virtual DbSet<ProtocoloDetalleImpresion> ProtocoloDetalleImpresion { get; set; }
     
         public virtual ObjectResult<sp_V_SEC_Usuario_Result> sp_V_SEC_Usuario()
         {

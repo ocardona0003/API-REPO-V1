@@ -14,9 +14,18 @@ namespace API_Paisa_v1.Models
     
     public partial class EspecificacionImpresion
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EspecificacionImpresion()
+        {
+            this.ProtocoloDetalleImpresion = new HashSet<ProtocoloDetalleImpresion>();
+        }
+    
         public int idEspecificacionImpresion { get; set; }
         public string descripcion { get; set; }
         public Nullable<int> ultimoUsr { get; set; }
         public Nullable<System.DateTime> ultimaFec { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProtocoloDetalleImpresion> ProtocoloDetalleImpresion { get; set; }
     }
 }
