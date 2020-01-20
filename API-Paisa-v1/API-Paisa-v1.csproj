@@ -215,6 +215,7 @@
     <Compile Include="Controllers\03. ProtocoloEncabezados\ProtocoloDetalleEmpaquesController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\ProtocoloDetalleExigenciasClientesController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\ProtocoloDetalleFardosController.cs" />
+    <Compile Include="Controllers\03. ProtocoloEncabezados\ProtocoloEncabezadosController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\TipoCajasController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\TipoExigenciasController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\TipoTapesController.cs" />
