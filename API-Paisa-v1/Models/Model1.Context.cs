@@ -44,6 +44,18 @@ namespace API_Paisa_v1.Models
         public virtual DbSet<TipoExigencia> TipoExigencia { get; set; }
         public virtual DbSet<TipoTape> TipoTape { get; set; }
         public virtual DbSet<TipoTermoencogible> TipoTermoencogible { get; set; }
+        public virtual DbSet<AnchoSinFuelles> AnchoSinFuelles { get; set; }
+        public virtual DbSet<Calibre2Caras> Calibre2Caras { get; set; }
+        public virtual DbSet<DisenoTroquel> DisenoTroquel { get; set; }
+        public virtual DbSet<Fuelle> Fuelle { get; set; }
+        public virtual DbSet<LargoSinFuelles> LargoSinFuelles { get; set; }
+        public virtual DbSet<Material> Material { get; set; }
+        public virtual DbSet<Presentacion> Presentacion { get; set; }
+        public virtual DbSet<ProtocoloDetalleMaterial> ProtocoloDetalleMaterial { get; set; }
+        public virtual DbSet<TipoEmbobinado> TipoEmbobinado { get; set; }
+        public virtual DbSet<TipoSello> TipoSello { get; set; }
+        public virtual DbSet<TratadoCorona> TratadoCorona { get; set; }
+        public virtual DbSet<UnidadMedida> UnidadMedida { get; set; }
     
         public virtual ObjectResult<sp_V_SEC_Usuario_Result> sp_V_SEC_Usuario()
         {

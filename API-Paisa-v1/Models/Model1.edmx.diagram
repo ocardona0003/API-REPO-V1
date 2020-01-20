@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fe0ad090b4b3497ab4cabf64b293b01a" Name="Diagram1" ZoomLevel="77" >
+      <Diagram DiagramId="fe0ad090b4b3497ab4cabf64b293b01a" Name="Diagram1" ZoomLevel="36" >
         <EntityTypeShape EntityType="paisaModel.SEC_PermisoConTipoUsuario" Width="1.5" PointX="3" PointY="2.75" />
         <EntityTypeShape EntityType="paisaModel.SEC_Permisos" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="paisaModel.SEC_TipoUsuario" Width="1.5" PointX="0.75" PointY="3.75" />
@@ -36,6 +36,35 @@
         <AssociationConnector Association="paisaModel.RefTipoExigencia43" />
         <AssociationConnector Association="paisaModel.RefProtocoloEncabezado20" />
         <AssociationConnector Association="paisaModel.RefProtocoloEncabezado23" />
+        <EntityTypeShape EntityType="paisaModel.AnchoSinFuelles" Width="1.5" PointX="15.25" PointY="11.625" />
+        <EntityTypeShape EntityType="paisaModel.Calibre2Caras" Width="1.5" PointX="18.25" PointY="15.75" />
+        <EntityTypeShape EntityType="paisaModel.DisenoTroquel" Width="1.5" PointX="10.75" PointY="35.875" />
+        <EntityTypeShape EntityType="paisaModel.Fuelle" Width="1.5" PointX="15.25" PointY="19.875" />
+        <EntityTypeShape EntityType="paisaModel.LargoSinFuelles" Width="1.5" PointX="15.25" PointY="15.625" />
+        <EntityTypeShape EntityType="paisaModel.Material" Width="1.5" PointX="10.75" PointY="27.625" />
+        <EntityTypeShape EntityType="paisaModel.Presentacion" Width="1.5" PointX="10.75" PointY="6.25" />
+        <EntityTypeShape EntityType="paisaModel.ProtocoloDetalleMaterial" Width="1.5" PointX="13" PointY="8.5" />
+        <EntityTypeShape EntityType="paisaModel.TipoEmbobinado" Width="1.5" PointX="10.75" PointY="33.125" />
+        <EntityTypeShape EntityType="paisaModel.TipoSello" Width="1.5" PointX="10.75" PointY="8.875" />
+        <EntityTypeShape EntityType="paisaModel.TratadoCorona" Width="1.5" PointX="10.75" PointY="30.375" />
+        <EntityTypeShape EntityType="paisaModel.UnidadMedida" Width="1.5" PointX="0.75" PointY="22.75" />
+        <AssociationConnector Association="paisaModel.RefProtocoloDetalleMaterial48" />
+        <AssociationConnector Association="paisaModel.RefUnidadMedida47" />
+        <AssociationConnector Association="paisaModel.RefProtocoloDetalleMaterial50" />
+        <AssociationConnector Association="paisaModel.RefUnidadMedida52" />
+        <AssociationConnector Association="paisaModel.RefDisenoTroquel39" />
+        <AssociationConnector Association="paisaModel.RefProtocoloDetalleMaterial8" />
+        <AssociationConnector Association="paisaModel.RefUnidadMedida7" />
+        <AssociationConnector Association="paisaModel.RefProtocoloDetalleMaterial51" />
+        <AssociationConnector Association="paisaModel.RefUnidadMedida53" />
+        <AssociationConnector Association="paisaModel.RefMaterial34" />
+        <AssociationConnector Association="paisaModel.RefPresentacion35" />
+        <AssociationConnector Association="paisaModel.RefProtocoloEncabezado11" />
+        <AssociationConnector Association="paisaModel.RefTipoEmbobinado41" />
+        <AssociationConnector Association="paisaModel.RefTipoSello36" />
+        <AssociationConnector Association="paisaModel.RefTratadoCorona40" />
+        <AssociationConnector Association="paisaModel.RefUnidadMedida38" />
+        <AssociationConnector Association="paisaModel.RefUnidadMedida42" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

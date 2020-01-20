@@ -5,12 +5,63 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="paisaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AnchoSinFuelles">
+          <Key>
+            <PropertyRef Name="idAnchoSinFuelles" />
+          </Key>
+          <Property Name="idAnchoSinFuelles" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProtocoloDetMat" Type="int" Nullable="false" />
+          <Property Name="idUnidadMedida" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="3a15" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="15a2999" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="mayor30" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="promedio" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Calibre2Caras">
+          <Key>
+            <PropertyRef Name="idCalibre2Caras" />
+          </Key>
+          <Property Name="idCalibre2Caras" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProtocoloDetMat" Type="int" Nullable="false" />
+          <Property Name="idUnidadMedida" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Min" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Promedio" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Max" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DisenoTroquel">
+          <Key>
+            <PropertyRef Name="idDisenoTroquel" />
+          </Key>
+          <Property Name="idDisenoTroquel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="server" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ruta" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nombreArchivo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="extension" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
         <EntityType Name="EspecificacionImpresion">
           <Key>
             <PropertyRef Name="idEspecificacionImpresion" />
           </Key>
           <Property Name="idEspecificacionImpresion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Fuelle">
+          <Key>
+            <PropertyRef Name="idFuelle" />
+          </Key>
+          <Property Name="idFuelle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProtocoloDetMat" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="idUnidadMedida" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="medida" Type="decimal" Precision="18" Scale="5" />
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
         </EntityType>
@@ -25,6 +76,38 @@
           <Property Name="ruta" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="nombreArchivo" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="extension" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LargoSinFuelles">
+          <Key>
+            <PropertyRef Name="idLargoSinFuelles" />
+          </Key>
+          <Property Name="idLargoSinFuelles" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProtocoloDetMat" Type="int" Nullable="false" />
+          <Property Name="idUnidadMedida" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="menor15" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="15a2999" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="mayor30" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="promedio" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="idMaterial" />
+          </Key>
+          <Property Name="idMaterial" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Presentacion">
+          <Key>
+            <PropertyRef Name="idPresentacion" />
+          </Key>
+          <Property Name="idPresentacion" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="10" />
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
         </EntityType>
@@ -79,6 +162,42 @@
           <Property Name="NoRepeticion" Type="decimal" Precision="18" Scale="2" />
           <Property Name="NoPistas" Type="decimal" Precision="18" Scale="2" />
           <Property Name="idTipoImpresion" Type="int" Nullable="false" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProtocoloDetalleMaterial">
+          <Key>
+            <PropertyRef Name="IdProtocoloDetMat" />
+          </Key>
+          <Property Name="IdProtocoloDetMat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEncabezado" Type="int" Nullable="false" />
+          <Property Name="idMaterial" Type="varchar" MaxLength="5" />
+          <Property Name="ColorPelicula" Type="varchar" MaxLength="50" />
+          <Property Name="idPresentacion" Type="varchar" MaxLength="5" />
+          <Property Name="OtroPresentacion" Type="varchar" MaxLength="50" />
+          <Property Name="idTipoSello" Type="varchar" MaxLength="5" />
+          <Property Name="MedidaPulgada" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EsMuestra" Type="bit" />
+          <Property Name="EsFibrilado" Type="bit" />
+          <Property Name="Rendimiento" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="PesoBobina" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PesoBobinaTolerancia" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="EsTratadoCorona" Type="bit" />
+          <Property Name="idTratadoCorona" Type="varchar" MaxLength="5" />
+          <Property Name="RendPorBobinaUniMed" Type="char" MaxLength="2" />
+          <Property Name="RendPorBobinaValor" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Embosado" Type="bit" />
+          <Property Name="MedidaTraslape" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="Ubicacion" Type="bit" />
+          <Property Name="MediaPestana" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="EsAdhesivoCierre" Type="bit" />
+          <Property Name="idDisenoTroquel" Type="int" />
+          <Property Name="Perforacion" Type="bit" />
+          <Property Name="idTipoEmbobinado" Type="int" />
+          <Property Name="AplicacionProdUso" Type="varchar" MaxLength="250" />
+          <Property Name="EsPeso" Type="bit" />
+          <Property Name="PresoPromUniMed" Type="char" MaxLength="2" />
+          <Property Name="PesoProm" Type="decimal" Precision="18" Scale="5" />
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
         </EntityType>
@@ -166,6 +285,15 @@
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
         </EntityType>
+        <EntityType Name="TipoEmbobinado">
+          <Key>
+            <PropertyRef Name="idTipoEmbobinado" />
+          </Key>
+          <Property Name="idTipoEmbobinado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
         <EntityType Name="TipoExigencia">
           <Key>
             <PropertyRef Name="idTipoExigencia" />
@@ -181,6 +309,15 @@
           </Key>
           <Property Name="idTipoImpresion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TipoSello">
+          <Key>
+            <PropertyRef Name="idTipoSello" />
+          </Key>
+          <Property Name="idTipoSello" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="descripcion" Type="char" MaxLength="10" />
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
         </EntityType>
@@ -202,6 +339,25 @@
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
         </EntityType>
+        <EntityType Name="TratadoCorona">
+          <Key>
+            <PropertyRef Name="idTratadoCorona" />
+          </Key>
+          <Property Name="idTratadoCorona" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UnidadMedida">
+          <Key>
+            <PropertyRef Name="idUnidadMedida" />
+          </Key>
+          <Property Name="idUnidadMedida" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="descripcionUM" Type="varchar" MaxLength="50" />
+          <Property Name="TipoMedida" Type="char" MaxLength="2" />
+          <Property Name="ultimoUsr" Type="int" />
+          <Property Name="ultimaFec" Type="datetime" />
+        </EntityType>
         <Association Name="FK_TipoTermoEnc">
           <End Role="TipoTermoencogible" Type="Self.TipoTermoencogible" Multiplicity="0..1" />
           <End Role="ProtocoloDetalleEmpaque" Type="Self.ProtocoloDetalleEmpaque" Multiplicity="*" />
@@ -214,6 +370,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="RefDisenoTroquel39">
+          <End Role="DisenoTroquel" Type="Self.DisenoTroquel" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DisenoTroquel">
+              <PropertyRef Name="idDisenoTroquel" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idDisenoTroquel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RefEspecificacionImpresion28">
           <End Role="EspecificacionImpresion" Type="Self.EspecificacionImpresion" Multiplicity="1" />
           <End Role="ProtocoloDetalleImpresion" Type="Self.ProtocoloDetalleImpresion" Multiplicity="*" />
@@ -223,6 +391,90 @@
             </Principal>
             <Dependent Role="ProtocoloDetalleImpresion">
               <PropertyRef Name="idEspecificacionImpresion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefMaterial34">
+          <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="idMaterial" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefPresentacion35">
+          <End Role="Presentacion" Type="Self.Presentacion" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presentacion">
+              <PropertyRef Name="idPresentacion" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idPresentacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloDetalleMaterial48">
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="1" />
+          <End Role="AnchoSinFuelles" Type="Self.AnchoSinFuelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Principal>
+            <Dependent Role="AnchoSinFuelles">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloDetalleMaterial50">
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="1" />
+          <End Role="Calibre2Caras" Type="Self.Calibre2Caras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Principal>
+            <Dependent Role="Calibre2Caras">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloDetalleMaterial51">
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="1" />
+          <End Role="LargoSinFuelles" Type="Self.LargoSinFuelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Principal>
+            <Dependent Role="LargoSinFuelles">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloDetalleMaterial8">
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="1" />
+          <End Role="Fuelle" Type="Self.Fuelle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Principal>
+            <Dependent Role="Fuelle">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloEncabezado11">
+          <End Role="ProtocoloEncabezado" Type="Self.ProtocoloEncabezado" Multiplicity="1" />
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloEncabezado">
+              <PropertyRef Name="IdEncabezado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="IdEncabezado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -334,6 +586,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="RefTipoEmbobinado41">
+          <End Role="TipoEmbobinado" Type="Self.TipoEmbobinado" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEmbobinado">
+              <PropertyRef Name="idTipoEmbobinado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idTipoEmbobinado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RefTipoExigencia43">
           <End Role="TipoExigencia" Type="Self.TipoExigencia" Multiplicity="0..1" />
           <End Role="ProtocoloDetalleExigenciasCliente" Type="Self.ProtocoloDetalleExigenciasCliente" Multiplicity="*" />
@@ -358,6 +622,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="RefTipoSello36">
+          <End Role="TipoSello" Type="Self.TipoSello" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoSello">
+              <PropertyRef Name="idTipoSello" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idTipoSello" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RefTipoTape46">
           <End Role="TipoTape" Type="Self.TipoTape" Multiplicity="0..1" />
           <End Role="ProtocoloDetalleEmpaque" Type="Self.ProtocoloDetalleEmpaque" Multiplicity="*" />
@@ -367,6 +643,90 @@
             </Principal>
             <Dependent Role="ProtocoloDetalleEmpaque">
               <PropertyRef Name="idTipoTape" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTratadoCorona40">
+          <End Role="TratadoCorona" Type="Self.TratadoCorona" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TratadoCorona">
+              <PropertyRef Name="idTratadoCorona" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idTratadoCorona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida38">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="RendPorBobinaUniMed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida42">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="0..1" />
+          <End Role="ProtocoloDetalleMaterial" Type="Self.ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="PresoPromUniMed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida47">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="1" />
+          <End Role="AnchoSinFuelles" Type="Self.AnchoSinFuelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="AnchoSinFuelles">
+              <PropertyRef Name="idUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida52">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="1" />
+          <End Role="Calibre2Caras" Type="Self.Calibre2Caras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="Calibre2Caras">
+              <PropertyRef Name="idUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida53">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="1" />
+          <End Role="LargoSinFuelles" Type="Self.LargoSinFuelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="LargoSinFuelles">
+              <PropertyRef Name="idUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida7">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="1" />
+          <End Role="Fuelle" Type="Self.Fuelle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="Fuelle">
+              <PropertyRef Name="idUnidadMedida" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -397,12 +757,20 @@
         </Function>
         <Function Name="sp_V_SEC_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="paisaModelStoreContainer">
+          <EntitySet Name="AnchoSinFuelles" EntityType="Self.AnchoSinFuelles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calibre2Caras" EntityType="Self.Calibre2Caras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisenoTroquel" EntityType="Self.DisenoTroquel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EspecificacionImpresion" EntityType="Self.EspecificacionImpresion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fuelle" EntityType="Self.Fuelle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImagenDetalleImpresion" EntityType="Self.ImagenDetalleImpresion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LargoSinFuelles" EntityType="Self.LargoSinFuelles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Presentacion" EntityType="Self.Presentacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProtocoloDetalleEmpaque" EntityType="Self.ProtocoloDetalleEmpaque" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProtocoloDetalleExigenciasCliente" EntityType="Self.ProtocoloDetalleExigenciasCliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProtocoloDetalleFardo" EntityType="Self.ProtocoloDetalleFardo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProtocoloDetalleImpresion" EntityType="Self.ProtocoloDetalleImpresion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProtocoloDetalleMaterial" EntityType="Self.ProtocoloDetalleMaterial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProtocoloEncabezado" EntityType="Self.ProtocoloEncabezado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RodilloImpresion" EntityType="Self.RodilloImpresion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_PermisoConTipoUsuario" EntityType="Self.SEC_PermisoConTipoUsuario" Schema="dbo" store:Type="Tables" />
@@ -410,17 +778,53 @@
           <EntitySet Name="SEC_TipoUsuario" EntityType="Self.SEC_TipoUsuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SEC_Usuario" EntityType="Self.SEC_Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoCaja" EntityType="Self.TipoCaja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoEmbobinado" EntityType="Self.TipoEmbobinado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoExigencia" EntityType="Self.TipoExigencia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoImpresion" EntityType="Self.TipoImpresion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoSello" EntityType="Self.TipoSello" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoTape" EntityType="Self.TipoTape" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoTermoencogible" EntityType="Self.TipoTermoencogible" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TratadoCorona" EntityType="Self.TratadoCorona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnidadMedida" EntityType="Self.UnidadMedida" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_TipoTermoEnc" Association="Self.FK_TipoTermoEnc">
             <End Role="TipoTermoencogible" EntitySet="TipoTermoencogible" />
             <End Role="ProtocoloDetalleEmpaque" EntitySet="ProtocoloDetalleEmpaque" />
           </AssociationSet>
+          <AssociationSet Name="RefDisenoTroquel39" Association="Self.RefDisenoTroquel39">
+            <End Role="DisenoTroquel" EntitySet="DisenoTroquel" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
           <AssociationSet Name="RefEspecificacionImpresion28" Association="Self.RefEspecificacionImpresion28">
             <End Role="EspecificacionImpresion" EntitySet="EspecificacionImpresion" />
             <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
+          </AssociationSet>
+          <AssociationSet Name="RefMaterial34" Association="Self.RefMaterial34">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefPresentacion35" Association="Self.RefPresentacion35">
+            <End Role="Presentacion" EntitySet="Presentacion" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloDetalleMaterial48" Association="Self.RefProtocoloDetalleMaterial48">
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+            <End Role="AnchoSinFuelles" EntitySet="AnchoSinFuelles" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloDetalleMaterial50" Association="Self.RefProtocoloDetalleMaterial50">
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+            <End Role="Calibre2Caras" EntitySet="Calibre2Caras" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloDetalleMaterial51" Association="Self.RefProtocoloDetalleMaterial51">
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+            <End Role="LargoSinFuelles" EntitySet="LargoSinFuelles" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloDetalleMaterial8" Association="Self.RefProtocoloDetalleMaterial8">
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+            <End Role="Fuelle" EntitySet="Fuelle" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloEncabezado11" Association="Self.RefProtocoloEncabezado11">
+            <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
           </AssociationSet>
           <AssociationSet Name="RefProtocoloEncabezado19" Association="Self.RefProtocoloEncabezado19">
             <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
@@ -458,6 +862,10 @@
             <End Role="TipoCaja" EntitySet="TipoCaja" />
             <End Role="ProtocoloDetalleEmpaque" EntitySet="ProtocoloDetalleEmpaque" />
           </AssociationSet>
+          <AssociationSet Name="RefTipoEmbobinado41" Association="Self.RefTipoEmbobinado41">
+            <End Role="TipoEmbobinado" EntitySet="TipoEmbobinado" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
           <AssociationSet Name="RefTipoExigencia43" Association="Self.RefTipoExigencia43">
             <End Role="TipoExigencia" EntitySet="TipoExigencia" />
             <End Role="ProtocoloDetalleExigenciasCliente" EntitySet="ProtocoloDetalleExigenciasCliente" />
@@ -466,9 +874,41 @@
             <End Role="TipoImpresion" EntitySet="TipoImpresion" />
             <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
           </AssociationSet>
+          <AssociationSet Name="RefTipoSello36" Association="Self.RefTipoSello36">
+            <End Role="TipoSello" EntitySet="TipoSello" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
           <AssociationSet Name="RefTipoTape46" Association="Self.RefTipoTape46">
             <End Role="TipoTape" EntitySet="TipoTape" />
             <End Role="ProtocoloDetalleEmpaque" EntitySet="ProtocoloDetalleEmpaque" />
+          </AssociationSet>
+          <AssociationSet Name="RefTratadoCorona40" Association="Self.RefTratadoCorona40">
+            <End Role="TratadoCorona" EntitySet="TratadoCorona" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida38" Association="Self.RefUnidadMedida38">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida42" Association="Self.RefUnidadMedida42">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida47" Association="Self.RefUnidadMedida47">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="AnchoSinFuelles" EntitySet="AnchoSinFuelles" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida52" Association="Self.RefUnidadMedida52">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="Calibre2Caras" EntitySet="Calibre2Caras" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida53" Association="Self.RefUnidadMedida53">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="LargoSinFuelles" EntitySet="LargoSinFuelles" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida7" Association="Self.RefUnidadMedida7">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="Fuelle" EntitySet="Fuelle" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -637,6 +1077,86 @@
           <AssociationSet Name="RefProtocoloEncabezado23" Association="paisaModel.RefProtocoloEncabezado23">
             <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
             <End Role="ProtocoloDetalleImpresion" EntitySet="ProtocoloDetalleImpresion" />
+          </AssociationSet>
+          <EntitySet Name="AnchoSinFuelles" EntityType="paisaModel.AnchoSinFuelles" />
+          <EntitySet Name="Calibre2Caras" EntityType="paisaModel.Calibre2Caras" />
+          <EntitySet Name="DisenoTroquel" EntityType="paisaModel.DisenoTroquel" />
+          <EntitySet Name="Fuelle" EntityType="paisaModel.Fuelle" />
+          <EntitySet Name="LargoSinFuelles" EntityType="paisaModel.LargoSinFuelles" />
+          <EntitySet Name="Material" EntityType="paisaModel.Material" />
+          <EntitySet Name="Presentacion" EntityType="paisaModel.Presentacion" />
+          <EntitySet Name="ProtocoloDetalleMaterial" EntityType="paisaModel.ProtocoloDetalleMaterial" />
+          <EntitySet Name="TipoEmbobinado" EntityType="paisaModel.TipoEmbobinado" />
+          <EntitySet Name="TipoSello" EntityType="paisaModel.TipoSello" />
+          <EntitySet Name="TratadoCorona" EntityType="paisaModel.TratadoCorona" />
+          <EntitySet Name="UnidadMedida" EntityType="paisaModel.UnidadMedida" />
+          <AssociationSet Name="RefProtocoloDetalleMaterial48" Association="paisaModel.RefProtocoloDetalleMaterial48">
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+            <End Role="AnchoSinFuelles" EntitySet="AnchoSinFuelles" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida47" Association="paisaModel.RefUnidadMedida47">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="AnchoSinFuelles" EntitySet="AnchoSinFuelles" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloDetalleMaterial50" Association="paisaModel.RefProtocoloDetalleMaterial50">
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+            <End Role="Calibre2Caras" EntitySet="Calibre2Caras" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida52" Association="paisaModel.RefUnidadMedida52">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="Calibre2Caras" EntitySet="Calibre2Caras" />
+          </AssociationSet>
+          <AssociationSet Name="RefDisenoTroquel39" Association="paisaModel.RefDisenoTroquel39">
+            <End Role="DisenoTroquel" EntitySet="DisenoTroquel" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloDetalleMaterial8" Association="paisaModel.RefProtocoloDetalleMaterial8">
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+            <End Role="Fuelle" EntitySet="Fuelle" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida7" Association="paisaModel.RefUnidadMedida7">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="Fuelle" EntitySet="Fuelle" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloDetalleMaterial51" Association="paisaModel.RefProtocoloDetalleMaterial51">
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+            <End Role="LargoSinFuelles" EntitySet="LargoSinFuelles" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida53" Association="paisaModel.RefUnidadMedida53">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="LargoSinFuelles" EntitySet="LargoSinFuelles" />
+          </AssociationSet>
+          <AssociationSet Name="RefMaterial34" Association="paisaModel.RefMaterial34">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefPresentacion35" Association="paisaModel.RefPresentacion35">
+            <End Role="Presentacion" EntitySet="Presentacion" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefProtocoloEncabezado11" Association="paisaModel.RefProtocoloEncabezado11">
+            <End Role="ProtocoloEncabezado" EntitySet="ProtocoloEncabezado" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefTipoEmbobinado41" Association="paisaModel.RefTipoEmbobinado41">
+            <End Role="TipoEmbobinado" EntitySet="TipoEmbobinado" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefTipoSello36" Association="paisaModel.RefTipoSello36">
+            <End Role="TipoSello" EntitySet="TipoSello" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefTratadoCorona40" Association="paisaModel.RefTratadoCorona40">
+            <End Role="TratadoCorona" EntitySet="TratadoCorona" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida38" Association="paisaModel.RefUnidadMedida38">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
+          </AssociationSet>
+          <AssociationSet Name="RefUnidadMedida42" Association="paisaModel.RefUnidadMedida42">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
           </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_V_SEC_Usuario_Result">
@@ -953,6 +1473,7 @@
           <NavigationProperty Name="ProtocoloDetalleExigenciasCliente" Relationship="paisaModel.RefProtocoloEncabezado19" FromRole="ProtocoloEncabezado" ToRole="ProtocoloDetalleExigenciasCliente" />
           <NavigationProperty Name="ProtocoloDetalleFardo" Relationship="paisaModel.RefProtocoloEncabezado20" FromRole="ProtocoloEncabezado" ToRole="ProtocoloDetalleFardo" />
           <NavigationProperty Name="ProtocoloDetalleImpresion" Relationship="paisaModel.RefProtocoloEncabezado23" FromRole="ProtocoloEncabezado" ToRole="ProtocoloDetalleImpresion" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefProtocoloEncabezado11" FromRole="ProtocoloEncabezado" ToRole="ProtocoloDetalleMaterial" />
         </EntityType>
         <EntityType Name="TipoCaja">
           <Key>
@@ -1087,6 +1608,399 @@
             </Principal>
             <Dependent Role="ProtocoloDetalleImpresion">
               <PropertyRef Name="IdEncabezado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AnchoSinFuelles">
+          <Key>
+            <PropertyRef Name="idAnchoSinFuelles" />
+          </Key>
+          <Property Name="idAnchoSinFuelles" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProtocoloDetMat" Type="Int32" Nullable="false" />
+          <Property Name="idUnidadMedida" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="C3a15" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="C15a2999" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="mayor30" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="promedio" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefProtocoloDetalleMaterial48" FromRole="AnchoSinFuelles" ToRole="ProtocoloDetalleMaterial" />
+          <NavigationProperty Name="UnidadMedida" Relationship="paisaModel.RefUnidadMedida47" FromRole="AnchoSinFuelles" ToRole="UnidadMedida" />
+        </EntityType>
+        <EntityType Name="Calibre2Caras">
+          <Key>
+            <PropertyRef Name="idCalibre2Caras" />
+          </Key>
+          <Property Name="idCalibre2Caras" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProtocoloDetMat" Type="Int32" Nullable="false" />
+          <Property Name="idUnidadMedida" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Min" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Promedio" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Max" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefProtocoloDetalleMaterial50" FromRole="Calibre2Caras" ToRole="ProtocoloDetalleMaterial" />
+          <NavigationProperty Name="UnidadMedida" Relationship="paisaModel.RefUnidadMedida52" FromRole="Calibre2Caras" ToRole="UnidadMedida" />
+        </EntityType>
+        <EntityType Name="DisenoTroquel">
+          <Key>
+            <PropertyRef Name="idDisenoTroquel" />
+          </Key>
+          <Property Name="idDisenoTroquel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="server" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ruta" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombreArchivo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="extension" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefDisenoTroquel39" FromRole="DisenoTroquel" ToRole="ProtocoloDetalleMaterial" />
+        </EntityType>
+        <EntityType Name="Fuelle">
+          <Key>
+            <PropertyRef Name="idFuelle" />
+          </Key>
+          <Property Name="idFuelle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProtocoloDetMat" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idUnidadMedida" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="medida" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefProtocoloDetalleMaterial8" FromRole="Fuelle" ToRole="ProtocoloDetalleMaterial" />
+          <NavigationProperty Name="UnidadMedida" Relationship="paisaModel.RefUnidadMedida7" FromRole="Fuelle" ToRole="UnidadMedida" />
+        </EntityType>
+        <EntityType Name="LargoSinFuelles">
+          <Key>
+            <PropertyRef Name="idLargoSinFuelles" />
+          </Key>
+          <Property Name="idLargoSinFuelles" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProtocoloDetMat" Type="Int32" Nullable="false" />
+          <Property Name="idUnidadMedida" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="menor15" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="C15a2999" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="mayor30" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="promedio" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefProtocoloDetalleMaterial51" FromRole="LargoSinFuelles" ToRole="ProtocoloDetalleMaterial" />
+          <NavigationProperty Name="UnidadMedida" Relationship="paisaModel.RefUnidadMedida53" FromRole="LargoSinFuelles" ToRole="UnidadMedida" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="idMaterial" />
+          </Key>
+          <Property Name="idMaterial" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefMaterial34" FromRole="Material" ToRole="ProtocoloDetalleMaterial" />
+        </EntityType>
+        <EntityType Name="Presentacion">
+          <Key>
+            <PropertyRef Name="idPresentacion" />
+          </Key>
+          <Property Name="idPresentacion" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefPresentacion35" FromRole="Presentacion" ToRole="ProtocoloDetalleMaterial" />
+        </EntityType>
+        <EntityType Name="ProtocoloDetalleMaterial">
+          <Key>
+            <PropertyRef Name="IdProtocoloDetMat" />
+          </Key>
+          <Property Name="IdProtocoloDetMat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEncabezado" Type="Int32" Nullable="false" />
+          <Property Name="idMaterial" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ColorPelicula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idPresentacion" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="OtroPresentacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idTipoSello" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="MedidaPulgada" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EsMuestra" Type="Boolean" />
+          <Property Name="EsFibrilado" Type="Boolean" />
+          <Property Name="Rendimiento" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="PesoBobina" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PesoBobinaTolerancia" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="EsTratadoCorona" Type="Boolean" />
+          <Property Name="idTratadoCorona" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="RendPorBobinaUniMed" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="RendPorBobinaValor" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Embosado" Type="Boolean" />
+          <Property Name="MedidaTraslape" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="Ubicacion" Type="Boolean" />
+          <Property Name="MediaPestana" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="EsAdhesivoCierre" Type="Boolean" />
+          <Property Name="idDisenoTroquel" Type="Int32" />
+          <Property Name="Perforacion" Type="Boolean" />
+          <Property Name="idTipoEmbobinado" Type="Int32" />
+          <Property Name="AplicacionProdUso" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="EsPeso" Type="Boolean" />
+          <Property Name="PresoPromUniMed" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="PesoProm" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AnchoSinFuelles" Relationship="paisaModel.RefProtocoloDetalleMaterial48" FromRole="ProtocoloDetalleMaterial" ToRole="AnchoSinFuelles" />
+          <NavigationProperty Name="Calibre2Caras" Relationship="paisaModel.RefProtocoloDetalleMaterial50" FromRole="ProtocoloDetalleMaterial" ToRole="Calibre2Caras" />
+          <NavigationProperty Name="DisenoTroquel" Relationship="paisaModel.RefDisenoTroquel39" FromRole="ProtocoloDetalleMaterial" ToRole="DisenoTroquel" />
+          <NavigationProperty Name="Fuelle" Relationship="paisaModel.RefProtocoloDetalleMaterial8" FromRole="ProtocoloDetalleMaterial" ToRole="Fuelle" />
+          <NavigationProperty Name="LargoSinFuelles" Relationship="paisaModel.RefProtocoloDetalleMaterial51" FromRole="ProtocoloDetalleMaterial" ToRole="LargoSinFuelles" />
+          <NavigationProperty Name="Material" Relationship="paisaModel.RefMaterial34" FromRole="ProtocoloDetalleMaterial" ToRole="Material" />
+          <NavigationProperty Name="Presentacion" Relationship="paisaModel.RefPresentacion35" FromRole="ProtocoloDetalleMaterial" ToRole="Presentacion" />
+          <NavigationProperty Name="ProtocoloEncabezado" Relationship="paisaModel.RefProtocoloEncabezado11" FromRole="ProtocoloDetalleMaterial" ToRole="ProtocoloEncabezado" />
+          <NavigationProperty Name="TipoEmbobinado" Relationship="paisaModel.RefTipoEmbobinado41" FromRole="ProtocoloDetalleMaterial" ToRole="TipoEmbobinado" />
+          <NavigationProperty Name="TipoSello" Relationship="paisaModel.RefTipoSello36" FromRole="ProtocoloDetalleMaterial" ToRole="TipoSello" />
+          <NavigationProperty Name="TratadoCorona" Relationship="paisaModel.RefTratadoCorona40" FromRole="ProtocoloDetalleMaterial" ToRole="TratadoCorona" />
+          <NavigationProperty Name="UnidadMedida" Relationship="paisaModel.RefUnidadMedida38" FromRole="ProtocoloDetalleMaterial" ToRole="UnidadMedida" />
+          <NavigationProperty Name="UnidadMedida1" Relationship="paisaModel.RefUnidadMedida42" FromRole="ProtocoloDetalleMaterial" ToRole="UnidadMedida" />
+        </EntityType>
+        <EntityType Name="TipoEmbobinado">
+          <Key>
+            <PropertyRef Name="idTipoEmbobinado" />
+          </Key>
+          <Property Name="idTipoEmbobinado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefTipoEmbobinado41" FromRole="TipoEmbobinado" ToRole="ProtocoloDetalleMaterial" />
+        </EntityType>
+        <EntityType Name="TipoSello">
+          <Key>
+            <PropertyRef Name="idTipoSello" />
+          </Key>
+          <Property Name="idTipoSello" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefTipoSello36" FromRole="TipoSello" ToRole="ProtocoloDetalleMaterial" />
+        </EntityType>
+        <EntityType Name="TratadoCorona">
+          <Key>
+            <PropertyRef Name="idTratadoCorona" />
+          </Key>
+          <Property Name="idTratadoCorona" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefTratadoCorona40" FromRole="TratadoCorona" ToRole="ProtocoloDetalleMaterial" />
+        </EntityType>
+        <EntityType Name="UnidadMedida">
+          <Key>
+            <PropertyRef Name="idUnidadMedida" />
+          </Key>
+          <Property Name="idUnidadMedida" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="descripcionUM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoMedida" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="ultimoUsr" Type="Int32" />
+          <Property Name="ultimaFec" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AnchoSinFuelles" Relationship="paisaModel.RefUnidadMedida47" FromRole="UnidadMedida" ToRole="AnchoSinFuelles" />
+          <NavigationProperty Name="Calibre2Caras" Relationship="paisaModel.RefUnidadMedida52" FromRole="UnidadMedida" ToRole="Calibre2Caras" />
+          <NavigationProperty Name="Fuelle" Relationship="paisaModel.RefUnidadMedida7" FromRole="UnidadMedida" ToRole="Fuelle" />
+          <NavigationProperty Name="LargoSinFuelles" Relationship="paisaModel.RefUnidadMedida53" FromRole="UnidadMedida" ToRole="LargoSinFuelles" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefUnidadMedida38" FromRole="UnidadMedida" ToRole="ProtocoloDetalleMaterial" />
+          <NavigationProperty Name="ProtocoloDetalleMaterial1" Relationship="paisaModel.RefUnidadMedida42" FromRole="UnidadMedida" ToRole="ProtocoloDetalleMaterial" />
+        </EntityType>
+        <Association Name="RefProtocoloDetalleMaterial48">
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="1" />
+          <End Type="paisaModel.AnchoSinFuelles" Role="AnchoSinFuelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Principal>
+            <Dependent Role="AnchoSinFuelles">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida47">
+          <End Type="paisaModel.UnidadMedida" Role="UnidadMedida" Multiplicity="1" />
+          <End Type="paisaModel.AnchoSinFuelles" Role="AnchoSinFuelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="AnchoSinFuelles">
+              <PropertyRef Name="idUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloDetalleMaterial50">
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="1" />
+          <End Type="paisaModel.Calibre2Caras" Role="Calibre2Caras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Principal>
+            <Dependent Role="Calibre2Caras">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida52">
+          <End Type="paisaModel.UnidadMedida" Role="UnidadMedida" Multiplicity="1" />
+          <End Type="paisaModel.Calibre2Caras" Role="Calibre2Caras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="Calibre2Caras">
+              <PropertyRef Name="idUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefDisenoTroquel39">
+          <End Type="paisaModel.DisenoTroquel" Role="DisenoTroquel" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DisenoTroquel">
+              <PropertyRef Name="idDisenoTroquel" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idDisenoTroquel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloDetalleMaterial8">
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="1" />
+          <End Type="paisaModel.Fuelle" Role="Fuelle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Principal>
+            <Dependent Role="Fuelle">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida7">
+          <End Type="paisaModel.UnidadMedida" Role="UnidadMedida" Multiplicity="1" />
+          <End Type="paisaModel.Fuelle" Role="Fuelle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="Fuelle">
+              <PropertyRef Name="idUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloDetalleMaterial51">
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="1" />
+          <End Type="paisaModel.LargoSinFuelles" Role="LargoSinFuelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Principal>
+            <Dependent Role="LargoSinFuelles">
+              <PropertyRef Name="IdProtocoloDetMat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida53">
+          <End Type="paisaModel.UnidadMedida" Role="UnidadMedida" Multiplicity="1" />
+          <End Type="paisaModel.LargoSinFuelles" Role="LargoSinFuelles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="LargoSinFuelles">
+              <PropertyRef Name="idUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefMaterial34">
+          <End Type="paisaModel.Material" Role="Material" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="idMaterial" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefPresentacion35">
+          <End Type="paisaModel.Presentacion" Role="Presentacion" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presentacion">
+              <PropertyRef Name="idPresentacion" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idPresentacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefProtocoloEncabezado11">
+          <End Type="paisaModel.ProtocoloEncabezado" Role="ProtocoloEncabezado" Multiplicity="1" />
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProtocoloEncabezado">
+              <PropertyRef Name="IdEncabezado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="IdEncabezado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTipoEmbobinado41">
+          <End Type="paisaModel.TipoEmbobinado" Role="TipoEmbobinado" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEmbobinado">
+              <PropertyRef Name="idTipoEmbobinado" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idTipoEmbobinado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTipoSello36">
+          <End Type="paisaModel.TipoSello" Role="TipoSello" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoSello">
+              <PropertyRef Name="idTipoSello" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idTipoSello" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefTratadoCorona40">
+          <End Type="paisaModel.TratadoCorona" Role="TratadoCorona" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TratadoCorona">
+              <PropertyRef Name="idTratadoCorona" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="idTratadoCorona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida38">
+          <End Type="paisaModel.UnidadMedida" Role="UnidadMedida" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="RendPorBobinaUniMed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUnidadMedida42">
+          <End Type="paisaModel.UnidadMedida" Role="UnidadMedida" Multiplicity="0..1" />
+          <End Type="paisaModel.ProtocoloDetalleMaterial" Role="ProtocoloDetalleMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="ProtocoloDetalleMaterial">
+              <PropertyRef Name="PresoPromUniMed" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1338,6 +2252,174 @@
                 <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="idTipoTermoE" ColumnName="idTipoTermoE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnchoSinFuelles">
+            <EntityTypeMapping TypeName="paisaModel.AnchoSinFuelles">
+              <MappingFragment StoreEntitySet="AnchoSinFuelles">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="promedio" ColumnName="promedio" />
+                <ScalarProperty Name="mayor30" ColumnName="mayor30" />
+                <ScalarProperty Name="C15a2999" ColumnName="15a2999" />
+                <ScalarProperty Name="C3a15" ColumnName="3a15" />
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+                <ScalarProperty Name="IdProtocoloDetMat" ColumnName="IdProtocoloDetMat" />
+                <ScalarProperty Name="idAnchoSinFuelles" ColumnName="idAnchoSinFuelles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calibre2Caras">
+            <EntityTypeMapping TypeName="paisaModel.Calibre2Caras">
+              <MappingFragment StoreEntitySet="Calibre2Caras">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="Min" ColumnName="Min" />
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+                <ScalarProperty Name="IdProtocoloDetMat" ColumnName="IdProtocoloDetMat" />
+                <ScalarProperty Name="idCalibre2Caras" ColumnName="idCalibre2Caras" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DisenoTroquel">
+            <EntityTypeMapping TypeName="paisaModel.DisenoTroquel">
+              <MappingFragment StoreEntitySet="DisenoTroquel">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="extension" ColumnName="extension" />
+                <ScalarProperty Name="nombreArchivo" ColumnName="nombreArchivo" />
+                <ScalarProperty Name="ruta" ColumnName="ruta" />
+                <ScalarProperty Name="server" ColumnName="server" />
+                <ScalarProperty Name="idDisenoTroquel" ColumnName="idDisenoTroquel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fuelle">
+            <EntityTypeMapping TypeName="paisaModel.Fuelle">
+              <MappingFragment StoreEntitySet="Fuelle">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="medida" ColumnName="medida" />
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="IdProtocoloDetMat" ColumnName="IdProtocoloDetMat" />
+                <ScalarProperty Name="idFuelle" ColumnName="idFuelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LargoSinFuelles">
+            <EntityTypeMapping TypeName="paisaModel.LargoSinFuelles">
+              <MappingFragment StoreEntitySet="LargoSinFuelles">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="promedio" ColumnName="promedio" />
+                <ScalarProperty Name="mayor30" ColumnName="mayor30" />
+                <ScalarProperty Name="C15a2999" ColumnName="15a2999" />
+                <ScalarProperty Name="menor15" ColumnName="menor15" />
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+                <ScalarProperty Name="IdProtocoloDetMat" ColumnName="IdProtocoloDetMat" />
+                <ScalarProperty Name="idLargoSinFuelles" ColumnName="idLargoSinFuelles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Material">
+            <EntityTypeMapping TypeName="paisaModel.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idMaterial" ColumnName="idMaterial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Presentacion">
+            <EntityTypeMapping TypeName="paisaModel.Presentacion">
+              <MappingFragment StoreEntitySet="Presentacion">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idPresentacion" ColumnName="idPresentacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProtocoloDetalleMaterial">
+            <EntityTypeMapping TypeName="paisaModel.ProtocoloDetalleMaterial">
+              <MappingFragment StoreEntitySet="ProtocoloDetalleMaterial">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="PesoProm" ColumnName="PesoProm" />
+                <ScalarProperty Name="PresoPromUniMed" ColumnName="PresoPromUniMed" />
+                <ScalarProperty Name="EsPeso" ColumnName="EsPeso" />
+                <ScalarProperty Name="AplicacionProdUso" ColumnName="AplicacionProdUso" />
+                <ScalarProperty Name="idTipoEmbobinado" ColumnName="idTipoEmbobinado" />
+                <ScalarProperty Name="Perforacion" ColumnName="Perforacion" />
+                <ScalarProperty Name="idDisenoTroquel" ColumnName="idDisenoTroquel" />
+                <ScalarProperty Name="EsAdhesivoCierre" ColumnName="EsAdhesivoCierre" />
+                <ScalarProperty Name="MediaPestana" ColumnName="MediaPestana" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="MedidaTraslape" ColumnName="MedidaTraslape" />
+                <ScalarProperty Name="Embosado" ColumnName="Embosado" />
+                <ScalarProperty Name="RendPorBobinaValor" ColumnName="RendPorBobinaValor" />
+                <ScalarProperty Name="RendPorBobinaUniMed" ColumnName="RendPorBobinaUniMed" />
+                <ScalarProperty Name="idTratadoCorona" ColumnName="idTratadoCorona" />
+                <ScalarProperty Name="EsTratadoCorona" ColumnName="EsTratadoCorona" />
+                <ScalarProperty Name="PesoBobinaTolerancia" ColumnName="PesoBobinaTolerancia" />
+                <ScalarProperty Name="PesoBobina" ColumnName="PesoBobina" />
+                <ScalarProperty Name="Rendimiento" ColumnName="Rendimiento" />
+                <ScalarProperty Name="EsFibrilado" ColumnName="EsFibrilado" />
+                <ScalarProperty Name="EsMuestra" ColumnName="EsMuestra" />
+                <ScalarProperty Name="MedidaPulgada" ColumnName="MedidaPulgada" />
+                <ScalarProperty Name="idTipoSello" ColumnName="idTipoSello" />
+                <ScalarProperty Name="OtroPresentacion" ColumnName="OtroPresentacion" />
+                <ScalarProperty Name="idPresentacion" ColumnName="idPresentacion" />
+                <ScalarProperty Name="ColorPelicula" ColumnName="ColorPelicula" />
+                <ScalarProperty Name="idMaterial" ColumnName="idMaterial" />
+                <ScalarProperty Name="IdEncabezado" ColumnName="IdEncabezado" />
+                <ScalarProperty Name="IdProtocoloDetMat" ColumnName="IdProtocoloDetMat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoEmbobinado">
+            <EntityTypeMapping TypeName="paisaModel.TipoEmbobinado">
+              <MappingFragment StoreEntitySet="TipoEmbobinado">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idTipoEmbobinado" ColumnName="idTipoEmbobinado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoSello">
+            <EntityTypeMapping TypeName="paisaModel.TipoSello">
+              <MappingFragment StoreEntitySet="TipoSello">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idTipoSello" ColumnName="idTipoSello" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TratadoCorona">
+            <EntityTypeMapping TypeName="paisaModel.TratadoCorona">
+              <MappingFragment StoreEntitySet="TratadoCorona">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idTratadoCorona" ColumnName="idTratadoCorona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidadMedida">
+            <EntityTypeMapping TypeName="paisaModel.UnidadMedida">
+              <MappingFragment StoreEntitySet="UnidadMedida">
+                <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
+                <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
+                <ScalarProperty Name="TipoMedida" ColumnName="TipoMedida" />
+                <ScalarProperty Name="descripcionUM" ColumnName="descripcionUM" />
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

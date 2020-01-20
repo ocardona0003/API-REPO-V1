@@ -21,6 +21,7 @@ namespace API_Paisa_v1.Models
             this.ProtocoloDetalleExigenciasCliente = new HashSet<ProtocoloDetalleExigenciasCliente>();
             this.ProtocoloDetalleFardo = new HashSet<ProtocoloDetalleFardo>();
             this.ProtocoloDetalleImpresion = new HashSet<ProtocoloDetalleImpresion>();
+            this.ProtocoloDetalleMaterial = new HashSet<ProtocoloDetalleMaterial>();
         }
     
         public int IdEncabezado { get; set; }
@@ -48,5 +49,7 @@ namespace API_Paisa_v1.Models
         public virtual ICollection<ProtocoloDetalleFardo> ProtocoloDetalleFardo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProtocoloDetalleImpresion> ProtocoloDetalleImpresion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProtocoloDetalleMaterial> ProtocoloDetalleMaterial { get; set; }
     }
 }
