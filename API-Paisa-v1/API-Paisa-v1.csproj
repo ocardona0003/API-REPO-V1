@@ -310,6 +310,9 @@
     <Compile Include="Models\SEC_Usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SP_P_SEC_PermisosXUsuario_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_P_SEC_Usuario1_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

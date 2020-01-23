@@ -381,5 +381,14 @@ namespace API_Paisa_v1.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_U_SEC_Usuario2", idUsuarioParameter, idTipoUsuarioParameter, codUsuarioParameter, passParameter, nombreCompletoParameter, emailParameter, activoParameter, ultimaFechaModParameter, ultimoIngresoParameter);
         }
+    
+        public virtual ObjectResult<SP_P_SEC_PermisosXUsuario_Result> SP_P_SEC_PermisosXUsuario(Nullable<int> idUsuario)
+        {
+            var idUsuarioParameter = idUsuario.HasValue ?
+                new ObjectParameter("idUsuario", idUsuario) :
+                new ObjectParameter("idUsuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_P_SEC_PermisosXUsuario_Result>("SP_P_SEC_PermisosXUsuario", idUsuarioParameter);
+        }
     }
 }

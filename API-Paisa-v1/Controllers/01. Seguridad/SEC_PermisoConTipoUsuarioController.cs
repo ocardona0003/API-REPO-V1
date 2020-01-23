@@ -28,13 +28,14 @@ namespace API_Paisa_v1.Controllers
         [ResponseType(typeof(SEC_PermisoConTipoUsuario))]
         public IHttpActionResult GetSEC_PermisoConTipoUsuario(int id)
         {
-            SEC_PermisoConTipoUsuario sEC_PermisoConTipoUsuario = db.SEC_PermisoConTipoUsuario.Find(id);
-            if (sEC_PermisoConTipoUsuario == null)
-            {
-                return NotFound();
-            }
+            var data = db.SP_P_SEC_PermisosXUsuario(id);
+            //SEC_PermisoConTipoUsuario sEC_PermisoConTipoUsuario = db.SEC_PermisoConTipoUsuario.Find(id);
+            //if (sEC_PermisoConTipoUsuario == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return Ok(sEC_PermisoConTipoUsuario);
+            return Ok(data);
         }
 
         // PUT: api/SEC_PermisoConTipoUsuario/5
