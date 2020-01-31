@@ -202,7 +202,6 @@
     <Compile Include="Controllers\01. Seguridad\HomeController.cs" />
     <Compile Include="Controllers\01. Seguridad\LoginController.cs" />
     <Compile Include="Controllers\02. ProtocoloDetalleImpresion\ImagenDetalleImpresionesController.cs" />
-    <Compile Include="Controllers\02. ProtocoloDetalleImpresion\ProtocoloDetalleExigenciasClientesController.cs" />
     <Compile Include="Controllers\02. ProtocoloDetalleImpresion\ProtocoloDetalleImpresionesController.cs" />
     <Compile Include="Controllers\02. ProtocoloDetalleImpresion\RodilloImpresionesController.cs" />
     <Compile Include="Controllers\01. Seguridad\SEC_PermisoConTipoUsuarioController.cs" />
@@ -216,6 +215,7 @@
     <Compile Include="Controllers\03. ProtocoloEncabezados\ProtocoloDetalleExigenciasClientesController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\ProtocoloDetalleFardosController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\ProtocoloEncabezadosController.cs" />
+    <Compile Include="Controllers\03. ProtocoloEncabezados\ProtocoloEncabezadosController_BK.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\TipoCajasController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\TipoExigenciasController.cs" />
     <Compile Include="Controllers\03. ProtocoloEncabezados\TipoTapesController.cs" />

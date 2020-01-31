@@ -40,6 +40,8 @@ namespace API_Paisa_v1.Models
         public Nullable<System.DateTime> fechaProduccion { get; set; }
         public Nullable<int> ultimoUsr { get; set; }
         public Nullable<System.DateTime> ultimaFec { get; set; }
+        public string Empresa { get; set; }
+        public string Versiona { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProtocoloDetalleEmpaque> ProtocoloDetalleEmpaque { get; set; }

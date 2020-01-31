@@ -14,8 +14,8 @@ namespace API_Paisa_v1.Controllers._03._ProtocoloEncabezados
 {
     [Authorize]
     [RoutePrefix("api/ProtocoloEncabezados")]
-    public class ProtocoloEncabezadosController : ApiController
-    {
+    public class ProtocoloEncabezadosController_BK : ApiController
+    {        
         private paisaEntities db = new paisaEntities();
 
         // GET: api/ProtocoloEncabezados

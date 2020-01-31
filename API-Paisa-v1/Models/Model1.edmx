@@ -221,6 +221,8 @@
           <Property Name="fechaProduccion" Type="datetime" />
           <Property Name="ultimoUsr" Type="int" />
           <Property Name="ultimaFec" Type="datetime" />
+          <Property Name="Empresa" Type="varchar" MaxLength="25" />
+          <Property Name="Versiona" Type="varchar" MaxLength="25" />
         </EntityType>
         <EntityType Name="RodilloImpresion">
           <Key>
@@ -1162,7 +1164,7 @@
             <End Role="ProtocoloDetalleMaterial" EntitySet="ProtocoloDetalleMaterial" />
           </AssociationSet>
           <FunctionImport Name="SP_P_SEC_PermisosXUsuario" ReturnType="Collection(paisaModel.SP_P_SEC_PermisosXUsuario_Result)">
-            <Parameter Name="idUsuario" Mode="In" Type="Int32" />
+          <Parameter Name="idUsuario" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_V_SEC_Usuario_Result">
@@ -1480,6 +1482,8 @@
           <NavigationProperty Name="ProtocoloDetalleFardo" Relationship="paisaModel.RefProtocoloEncabezado20" FromRole="ProtocoloEncabezado" ToRole="ProtocoloDetalleFardo" />
           <NavigationProperty Name="ProtocoloDetalleImpresion" Relationship="paisaModel.RefProtocoloEncabezado23" FromRole="ProtocoloEncabezado" ToRole="ProtocoloDetalleImpresion" />
           <NavigationProperty Name="ProtocoloDetalleMaterial" Relationship="paisaModel.RefProtocoloEncabezado11" FromRole="ProtocoloEncabezado" ToRole="ProtocoloDetalleMaterial" />
+          <Property Name="Empresa" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Versiona" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TipoCaja">
           <Key>
@@ -2210,6 +2214,8 @@
           <EntitySetMapping Name="ProtocoloEncabezado">
             <EntityTypeMapping TypeName="paisaModel.ProtocoloEncabezado">
               <MappingFragment StoreEntitySet="ProtocoloEncabezado">
+                <ScalarProperty Name="Versiona" ColumnName="Versiona" />
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
                 <ScalarProperty Name="ultimaFec" ColumnName="ultimaFec" />
                 <ScalarProperty Name="ultimoUsr" ColumnName="ultimoUsr" />
                 <ScalarProperty Name="fechaProduccion" ColumnName="fechaProduccion" />
